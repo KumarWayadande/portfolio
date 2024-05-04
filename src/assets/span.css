@@ -1,0 +1,34 @@
+.full-page-width {
+    width: 100%;
+    overflow: hidden;
+    background-color:#ccc;
+    height: 500px;
+}
+.center-content-container {
+    width:260px;
+    margin: 0 auto;
+}
+.content-container {
+    width: 100%;
+    background-color:#aaa;
+    margin: 0 auto;
+    padding: 20px;
+}
+.extended-content-container {
+    width: 500%;
+    margin-left: -200%;
+    background-color:#aaa;
+    padding: 20px;
+}
+.content {
+    width:100%;
+    height: 100px;
+    background-color:#ec008b;
+    text-align:center;
+}
+.extended-content {
+    width:100%;
+    height: 100px;
+    background-color:#ec008b;
+    text-align:center;
+}
