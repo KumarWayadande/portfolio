@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ArticleContainer from "./components/ArticleContainer";
 import LandingPage from "./components/LandingPage";
+import Uses from "./components/Uses";
+import Speaking from "./components/Speaking";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(<LandingPage />);
@@ -10,7 +12,7 @@ export default function App() {
   };
 
   return (
-    <div className="full-width-container w-[100%] overflow-hidden">
+    <div className="full-width-container w-[100%] overflow-hidden selection:bg-[#1fbcaa] selection:text-white">
       <div className="container bg-white max-w-7xl mx-auto md:px-20 px-6  h-max-full inset-0 py-2">
         <div className="nav-container flex md:justify-between my-6 justify-end">
           <div className="profile-container">
@@ -34,10 +36,14 @@ export default function App() {
               <div className="nav-item font-semibold text-sm cursor-pointer hover:text-[#1fbcaa]">
                 Projects
               </div>
-              <div className="nav-item font-semibold text-sm cursor-pointer hover:text-[#1fbcaa]">
+              <div className="nav-item font-semibold text-sm cursor-pointer hover:text-[#1fbcaa]"
+                onClick={() => handleClick(<Speaking />)}
+              >
                 Speaking
               </div>
-              <div className="nav-item font-semibold text-sm cursor-pointer hover:text-[#1fbcaa]">
+              <div className="nav-item font-semibold text-sm cursor-pointer hover:text-[#1fbcaa]"
+                onClick={() => handleClick(<Uses />)}
+              >
                 Uses
               </div>
             </div>

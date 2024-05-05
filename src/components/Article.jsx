@@ -18,6 +18,7 @@ const Article = () => {
           Read article &gt;
         </p>
       </div>
+      
     </div>
   );
 };
