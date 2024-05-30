@@ -18,7 +18,7 @@ const ArticleContainer = () => {
       </HeadingContainer>
 
 
-      <div className="article-card-container flex flex-col border-l-[1px] border-b-gray-50 md:w-[80%] sm:pl-5">
+      <div className="article-card-container flex flex-col border-l-[1px] dark:border-gray-700 border-b-gray-50 md:w-[80%] sm:pl-5">
         {/* All articles */}
         <Article />
         <Article />

@@ -1,4 +1,3 @@
-import Article from "./Article";
 import Heading from "./Heading";
 import HeadingContainer from "./HeadingContainer";
 import SubHeading from "./SubHeading";
@@ -17,7 +16,7 @@ const Uses = () => {
         <div className="tool-info"></div>
       </div>     */}
 
-      <div className="tool-container flex flex-col border-l-[1px] border-b-gray-50 md:w-[80%] sm:pl-5">
+      <div className="tool-container flex flex-col border-l-[1px] border-b-gray-50 md:w-[80%] sm:pl-5 dark:border-gray-700">
         {/* All articles */}
         <Use />
         <Use />
