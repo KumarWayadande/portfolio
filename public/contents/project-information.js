@@ -35,6 +35,12 @@ const projectInfo = [
       "Showcasing skills, projects, experience, contact information, professional online presence.",
     projectLink: "https://github.com/KumarWayadande/kw.in",
   },
+  {
+    projectHeader: "Old portfolio",
+    projectDescription:
+      "Showcasing skills, projects, experience, contact information, professional online presence.",
+    projectLink: "https://github.com/KumarWayadande/kw.in",
+  },
 ];
 
 
