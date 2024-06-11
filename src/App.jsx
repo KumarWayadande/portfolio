@@ -14,11 +14,32 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  let darkModeMenuIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 0 24 24"
+      width="24px"
+      fill="#434343"
+    >
+      <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+    </svg>
+  );
 
-  let darkModeMenuIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#434343"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>;
-
-  if(darkMode)
-      darkModeMenuIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#1fbcaa"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>;
+  if (darkMode)
+    darkModeMenuIcon = (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+        fill="#1fbcaa"
+      >
+        <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+      </svg>
+    );
 
   const handleClick = (component) => {
     setCurrentPage(component);
@@ -30,12 +51,17 @@ export default function App() {
   };
 
   const handleModalClick = () => {
-    setShowModal(prevValue => !prevValue);
+    setShowModal((prevValue) => !prevValue);
   };
 
   return (
     <>
-      {showModal && <Navbar handleModalClick={handleModalClick} handleComponentClick={handleClick} />}
+      {showModal && (
+        <Navbar
+          handleModalClick={handleModalClick}
+          handleComponentClick={handleClick}
+        />
+      )}
       <div className="dark:bg-black full-width-container w-[100%] overflow-hidden selection:bg-[#1fbcaa] selection:text-white">
         <div className="container bg-white dark:bg-[#18181b] max-w-7xl mx-auto md:px-20 px-6  h-max-full inset-0 py-2">
           <div className="nav-container flex md:justify-between my-6 justify-end">
@@ -84,12 +110,17 @@ export default function App() {
             </nav>
 
             <div className="nav-buttons flex justify-end">
-             {!showModal && <button
-                onClick={handleModalClick}
-                className="dark:hover:border-gray-500 dark:shadow-none dark:border-gray-600 dark:border-[1px] dark:bg-[#252529] dark:text-gray-200 md:hidden px-3 py-2 text-sm font-semibold shadow-sm border border-b-gray-200 rounded-full mx-2"
-              >
-                <span className="flex"><span>Menu</span>{darkModeMenuIcon}</span>
-              </button>}
+              {!showModal && (
+                <button
+                  onClick={handleModalClick}
+                  className="dark:hover:border-gray-500 dark:shadow-none dark:border-gray-600 dark:border-[1px] dark:bg-[#252529] dark:text-gray-200 md:hidden px-3 py-2 text-sm font-semibold shadow-sm border border-b-gray-200 rounded-full mx-2"
+                >
+                  <span className="flex">
+                    <span>Menu</span>
+                    {darkModeMenuIcon}
+                  </span>
+                </button>
+              )}
               {!darkMode && (
                 <button
                   className="hover:shadow-sm border border-gray-100 rounded-3xl px-3 py-2"
