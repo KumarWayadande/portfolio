@@ -9,15 +9,12 @@ import Uses from "./Uses";
 import { NavbarContext } from "../store/NavbarContext";
 import { useContext } from "react";
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-
 export default function Navbar() {
-  const {handleModalClick, handleClick} = useContext(NavbarContext);
+  const {handleModalClick} = useContext(NavbarContext);
   // handleComponentClick
   return createPortal(
     // <nav className="md:hidden bg-[#050505e1] backdrop-blur-sm w-[100%]  z-10 absolute">
-    <nav onClick={handleModalClick} className="md:hidden bg-zinc-800/40 fixed backdrop-blur-sm dark:bg-black/80 opacity-100 w-[100%] z-50 inset-0">
+    <nav onClick={handleModalClick} className="md:hidden bg-zinc-800/40 fixed backdrop-blur-sm dark:bg-black/80 opacity-100 w-[100%] z-40 inset-0">
       <div className="inner-navbar-container dark:bg-zinc-900 bg-white w-[95%] mx-auto my-10 rounded-3xl flex flex-col">
         <div className="navigator flex items-center flex-row justify-between px-10 py-5">
           <div>
@@ -34,44 +31,31 @@ export default function Navbar() {
             >
               x
             </span>
-            {/* <span>
-              <FontAwesomeIcon icon="fa-solid fa-xmark" style={{color: "#ffffff",}} />
-            </span> */}
           </div>
         </div>
         <NavItemContainer>
           <>
             <NavItem
-              handleComponentClick={handleClick}
-              handleModalClick={handleModalClick}
               content="About"
               isBottomBorder
               component={<LandingPage />}
             />
             <NavItem
-              handleComponentClick={handleClick}
-              handleModalClick={handleModalClick}
               content="Articles"
               isBottomBorder
               component={<ArticleContainer />}
             />
             <NavItem
-              handleComponentClick={handleClick}
-              handleModalClick={handleModalClick}
               content="Projects"
               isBottomBorder
               component={<ProjectContainer />}
             />
             <NavItem
-              handleComponentClick={handleClick}
-              handleModalClick={handleModalClick}
               content="Speaking"
               isBottomBorder
               component={<Speaking />}
             />
             <NavItem
-              handleComponentClick={handleClick}
-              handleModalClick={handleModalClick}
               content="Uses"
               isBottomBorder={false}
               component={<Uses />}

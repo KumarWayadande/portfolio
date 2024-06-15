@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { NavbarContext } from "./store/NavbarContext";
 import NavbarButtons from "./components/NavbarButtons";
 export default function App() {
-  const { currentPage, showModal } = useContext(NavbarContext);
+  const { currentPage, showModal, footerCopyRightText } = useContext(NavbarContext);
 
   return (
     <>
@@ -20,6 +20,7 @@ export default function App() {
           <div className="nav-container flex md:justify-between my-6 justify-end">
             <div className="profile-container">
               {/* <img src="./profile.jpg" className="w-16 hidden rounded-full translate-y-24 absolute border border-gray-200 shadow-sm md:block" alt="" /> */}
+              {/* This is just used as a placeholder */}
             </div>
 
             <nav className="hidden dark:bg-[#252529] dark:border-gray-800 md:block max-w-fit shadow-sm px-5 py-2.5 rounded-full border border-b-gray-50">
@@ -27,35 +28,26 @@ export default function App() {
                 <NavbarItem
                   component={<LandingPage />}
                   navbarHeading="About"
-                  // currentNavbarItem={currentPage.type.name}
                   componentName="LandingPage"
                 />
                 <NavbarItem
-                  // handleClick={handleClick}
                   component={<ArticleContainer />}
                   navbarHeading="Articles"
-                  // currentNavbarItem={currentPage.type.name}
                   componentName="ArticleContainer"
                 />
                 <NavbarItem
-                  // handleClick={handleClick}
                   component={<ProjectContainer />}
                   navbarHeading="Projects"
-                  // currentNavbarItem={currentPage.type.name}
                   componentName="ProjectContainer"
                 />
                 <NavbarItem
-                  // handleClick={handleClick}
                   component={<Speaking />}
                   navbarHeading="Speaking"
-                  // currentNavbarItem={currentPage.type.name}
                   componentName="Speaking"
                 />
                 <NavbarItem
-                  // handleClick={handleClick}
                   component={<Uses />}
                   navbarHeading="Uses"
-                  // currentNavbarItem={currentPage.type.name}
                   componentName="Uses"
                 />
               </NavbarItemContainer>
@@ -65,6 +57,7 @@ export default function App() {
 
           {/* Any intermediate code goes in this section */}
           {/* Start of this section */}
+          {/* This currentPage is handled entirely in the NavbarContext.jsx file */}
 
           {currentPage}
 
@@ -73,44 +66,34 @@ export default function App() {
           <div className="footer flex flex-col items-center md:flex-row justify-between py-10 px-5 my-5 border-t-2 border-gray-100 dark:border-t-[1px] dark:border-gray-800">
             <NavbarItemContainer extraClasses="my-3">
               <NavbarItem
-                // handleClick={handleClick}
                 component={<LandingPage />}
                 navbarHeading="About"
-                // currentNavbarItem={currentPage.type.name}
                 componentName="LandingPage"
               />
               <NavbarItem
-                // handleClick={handleClick}
                 component={<ArticleContainer />}
                 navbarHeading="Articles"
-                // currentNavbarItem={currentPage.type.name}
                 componentName="ArticleContainer"
               />
               <NavbarItem
-                // handleClick={handleClick}
                 component={<ProjectContainer />}
                 navbarHeading="Projects"
-                // currentNavbarItem={currentPage.type.name}
                 componentName="ProjectContainer"
               />
               <NavbarItem
-                // handleClick={handleClick}
                 component={<Speaking />}
                 navbarHeading="Speaking"
-                // currentNavbarItem={currentPage.type.name}
                 componentName="Speaking"
               />
               <NavbarItem
-                // handleClick={handleClick}
                 component={<Uses />}
                 navbarHeading="Uses"
-                // currentNavbarItem={currentPage.type.name}
                 componentName="Uses"
               />
             </NavbarItemContainer>
             <div className="copy-right my-3">
               <span className="text-stone-500 text-sm">
-                © 2024 Spencer Sharp. All rights reserved.
+                {footerCopyRightText}
               </span>
             </div>
           </div>
