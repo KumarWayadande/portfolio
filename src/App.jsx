@@ -8,9 +8,9 @@ import Navbar from "./components/Navbar";
 import NavbarItemContainer from "./components/NavbarItemContainer";
 import { useContext } from "react";
 import { NavbarContext } from "./store/NavbarContext";
+import NavbarButtons from "./components/NavbarButtons";
 export default function App() {
-  const { currentPage, showModal } =
-    useContext(NavbarContext);
+  const { currentPage, showModal } = useContext(NavbarContext);
 
   return (
     <>
@@ -60,6 +60,7 @@ export default function App() {
                 />
               </NavbarItemContainer>
             </nav>
+            <NavbarButtons />
           </div>
 
           {/* Any intermediate code goes in this section */}
