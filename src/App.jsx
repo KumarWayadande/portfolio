@@ -1,4 +1,4 @@
-import ArticleContainer from "./components/ArticleContainer";
+import ArticleContainer from "./components/article-components/ArticleContainer";
 import LandingPage from "./components/LandingPage";
 import Uses from "./components/Uses";
 import Speaking from "./components/Speaking";

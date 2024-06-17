@@ -1,8 +1,8 @@
 import Article from "./Article";
-import Heading from "./Heading";
-import HeadingContainer from "./HeadingContainer";
-import SubHeading from "./SubHeading";
-
+import Heading from "../Heading";
+import HeadingContainer from "../HeadingContainer";
+import SubHeading from "../SubHeading";
+import ARTICLES from "../../contents/articles-info.js";
 const ArticleContainer = () => {
   return (
     <div className="article-container my-20">
@@ -17,13 +17,11 @@ const ArticleContainer = () => {
         />
       </HeadingContainer>
 
-
       <div className="article-card-container flex flex-col border-l-[1px] dark:border-gray-700 border-b-gray-50 md:w-[80%] sm:pl-5">
         {/* All articles */}
-        <Article />
-        <Article />
-        <Article />
-        <Article />
+        {ARTICLES.map((article, index) => {
+          return <Article {...article} key={index} />;
+        })}
         {/* End of all articles */}
       </div>
     </div>
