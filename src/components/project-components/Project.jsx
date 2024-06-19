@@ -4,7 +4,7 @@ const Project = (prop) => {
     <div className="box1 group flex flex-col pl-3 pr-20 py-2 rounded-3xl hover:bg-gray-50 dark:hover:bg-[#252529] cursor-pointer">
       <span className="rounded-3x">
         <img
-          src="\src\assets\company-logo1.png"
+          src={prop.projectLogo}
           className="w-14 rounded-3xl border-white border-8 shadow-lg my-3 dark:border-[#252529]"
           alt=""
         />

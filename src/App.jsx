@@ -2,7 +2,7 @@ import ArticleContainer from "./components/article-components/ArticleContainer";
 import LandingPage from "./components/LandingPage";
 import Uses from "./components/Uses";
 import Speaking from "./components/Speaking";
-import ProjectContainer from "./components/ProjectContainer";
+import ProjectContainer from "./components/project-components/ProjectContainer";
 import NavbarItem from "./components/NavbarItem";
 import Navbar from "./components/Navbar";
 import NavbarItemContainer from "./components/NavbarItemContainer";

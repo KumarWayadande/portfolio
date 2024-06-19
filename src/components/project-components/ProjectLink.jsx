@@ -1,5 +1,4 @@
-const BlueButton = (prop) => {
-  console.log(prop.projectLink);
+const ProjectLink = (prop) => {
   return (
     <a href={prop.projectLink}>
       <p className="my-4 text-stone-500 text-sm font-semibold cursor-pointer group-hover:text-[#1fbcaa] dark:text-gray-300">
@@ -9,4 +8,4 @@ const BlueButton = (prop) => {
   );
 };
 
-export default BlueButton;
+export default ProjectLink;
