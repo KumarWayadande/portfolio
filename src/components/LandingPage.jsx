@@ -1,5 +1,5 @@
 
-import MediaIcon from "./MediaIcon";
+import MediaIcon from "./Mediacon";
 import OverviewArticle from "./OverviewArticle";
 
 const LandingPage = () => {

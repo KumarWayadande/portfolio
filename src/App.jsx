@@ -1,14 +1,14 @@
 import ArticleContainer from "./components/article-components/ArticleContainer";
 import LandingPage from "./components/LandingPage";
-import Uses from "./components/Uses";
-import Speaking from "./components/Speaking";
+import Uses from "./components/tools-components/ToolContainer";
+import Speaking from "./components/speaking-components/Speaking";
 import ProjectContainer from "./components/project-components/ProjectContainer";
-import NavbarItem from "./components/NavbarItem";
-import Navbar from "./components/Navbar";
-import NavbarItemContainer from "./components/NavbarItemContainer";
+import NavbarItem from "./components/desktop-navbar/NavbarItem";
+import Navbar from "./components/mobile-navbar/Navbar";
+import NavbarItemContainer from "./components/desktop-navbar/NavbarItemContainer";
 import { useContext } from "react";
 import { NavbarContext } from "./store/NavbarContext";
-import NavbarButtons from "./components/NavbarButtons";
+import NavbarButtons from "./components/mobile-navbar/NavbarButtons";
 export default function App() {
   const { currentPage, showModal, footerCopyRightText } = useContext(NavbarContext);
 
