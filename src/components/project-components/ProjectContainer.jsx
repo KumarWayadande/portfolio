@@ -1,8 +1,8 @@
 import projectInfo from "./project-information";
-import Heading from "../Heading";
-import HeadingContainer from "../HeadingContainer";
+import Heading from "../utility components/Heading";
+import HeadingContainer from "../utility components/HeadingContainer";
 import Project from "./Project";
-import SubHeading from "../SubHeading";
+import SubHeading from "../utility components/SubHeading";
 
 const ProjectContainer = () => {
   return (

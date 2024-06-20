@@ -1,5 +1,5 @@
 import ArticleContainer from "./components/article-components/ArticleContainer";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/utility components/LandingPage";
 import Uses from "./components/tools-components/ToolContainer";
 import Speaking from "./components/speaking-components/Speaking";
 import ProjectContainer from "./components/project-components/ProjectContainer";

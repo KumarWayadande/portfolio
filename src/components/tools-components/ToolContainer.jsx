@@ -1,6 +1,7 @@
-import Heading from "../Heading";
-import HeadingContainer from "../HeadingContainer";
-import SubHeading from "../SubHeading";
+import TOOLS_INFO from "../../contents/tools-info";
+import Heading from "../utility components/Heading";
+import HeadingContainer from "../utility components/HeadingContainer";
+import SubHeading from "../utility components/SubHeading";
 import Tool from "./Tools";
 
 const Uses = () => {
@@ -12,8 +13,16 @@ const Uses = () => {
       </HeadingContainer>
 
       <div className="tool-container flex flex-col border-l-[1px] border-b-gray-50 md:w-[80%] sm:pl-5 dark:border-gray-700">
-        <Tool />
-        <Tool />
+        {TOOLS_INFO.map((item) => {
+          return (
+            <Tool
+              key={item.id}
+              toolDate="Productivity"
+              toolName={item.toolName}
+              toolDescription={item.toolDescription}
+            />
+          );
+        })}
       </div>
     </div>
   );

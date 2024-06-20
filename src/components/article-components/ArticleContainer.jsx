@@ -1,7 +1,7 @@
 import Article from "./Article";
-import Heading from "../Heading";
-import HeadingContainer from "../HeadingContainer";
-import SubHeading from "../SubHeading";
+import Heading from "../utility components/Heading.jsx";
+import HeadingContainer from "../utility components/HeadingContainer.jsx";
+import SubHeading from "../utility components/SubHeading.jsx";
 import ARTICLES from "../../contents/articles-info.js";
 const ArticleContainer = () => {
   return (

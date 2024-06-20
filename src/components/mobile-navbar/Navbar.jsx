@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import NavItemContainer from "./NavItemContainer";
 import NavItem from "./NavItem";
-import LandingPage from "../LandingPage";
+import LandingPage from "../utility components/LandingPage";
 import ArticleContainer from "../article-components/ArticleContainer";
 import ProjectContainer from "../project-components/ProjectContainer";
 import Speaking from "../speaking-components/Speaking";

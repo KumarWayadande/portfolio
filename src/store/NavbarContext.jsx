@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
 
 import { createContext, useState } from "react";
-import LandingPage from "../components/LandingPage";
+import LandingPage from "../components/utility components/LandingPage";
 import { IoSunny } from "react-icons/io5";
 import { LuMoonStar } from "react-icons/lu";
 

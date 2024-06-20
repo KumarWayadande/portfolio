@@ -1,16 +1,17 @@
 import ToolDate from "./ToolDate";
 import ToolInformation from "./ToolInformation";
 import ToolInformationContainer from "./ToolInformationContainer";
+import ToolsContainer from "./ToolsContainer";
 
-const Use = () => {
+const Tool = (prop) => {
   return (
-    <div className="article-row flex flex-col md:flex-row ">
-      <ToolDate  />
+    <ToolsContainer>
+      <ToolDate toolDate={prop.toolDate} />
       <ToolInformationContainer>
-        <ToolInformation />
+        <ToolInformation toolName={prop.toolName} toolDescription={prop.toolDescription} />
       </ToolInformationContainer>
-    </div>
+    </ToolsContainer>
   );
 };
 
-export default Use;
+export default Tool;

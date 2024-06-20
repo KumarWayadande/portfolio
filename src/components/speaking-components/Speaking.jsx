@@ -1,6 +1,6 @@
-import HeadingContainer from "../HeadingContainer";
-import Heading from "../Heading";
-import SubHeading from "../SubHeading";
+import HeadingContainer from "../utility components/HeadingContainer";
+import Heading from "../utility components/Heading";
+import SubHeading from "../utility components/SubHeading";
 import SpeakingInfo from "./SpeakingInfo";
 import SPEAKING_INFO from "../../contents/speaking-info";
 const Speaking = () => {
