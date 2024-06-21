@@ -49,8 +49,8 @@ export function NavbarContextProvider({ children }) {
   const [showModal, setShowModal] = useState(false);
   let footerCopyRightText = "© 2024 Kumar Wayadande. All rights reserved.";
 
-  const handleClick = (component) => {
-    setCurrentPage(component);
+  const handleClick = (Component) => {
+    setCurrentPage(<Component />);
   };
 
   const darkModeHandler = () => {
