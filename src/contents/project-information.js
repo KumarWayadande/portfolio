@@ -1,4 +1,4 @@
-import projectLogo from "../../assets/company-logo1.png";
+import projectLogo from "../assets/company-logo1.png";
 
 const projectInfo = [
   {
