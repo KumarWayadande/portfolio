@@ -13,8 +13,8 @@ export const NavbarContext = createContext({
   handleClick: () => {},
   darkModeHandler: () => {},
   handleModalClick: () => {},
-  getBothModeIcon:() => {},
-  footerCopyRightText:""
+  getBothModeIcon: () => {},
+  footerCopyRightText: "",
 });
 
 const LIGHT_MODE_ICON = (
@@ -44,18 +44,22 @@ const DARK_MODE_ICON = (
 );
 
 export function NavbarContextProvider({ children }) {
+  const localStorageDarkModeValue =
+    localStorage.getItem("darkMode") === "true" ? true : false;
   const [currentPage, setCurrentPage] = useState(<LandingPage />);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(localStorageDarkModeValue);
   const [showModal, setShowModal] = useState(false);
   let footerCopyRightText = "© 2024 Kumar Wayadande. All rights reserved.";
-
+  console.log("darkMode State value : ", darkMode);
   const handleClick = (Component) => {
     setCurrentPage(<Component />);
   };
+  if (darkMode) document.body.classList.add("dark");
+  else document.body.classList.remove("dark");
 
   const darkModeHandler = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle("dark");
+    localStorage.setItem("darkMode", !darkMode);
+    setDarkMode((prev) => !prev);
   };
 
   const handleModalClick = () => {
@@ -81,9 +85,9 @@ export function NavbarContextProvider({ children }) {
     }
 
     return {
-      btn:btn,
-      btnClass:btnClass
-    }
+      btn: btn,
+      btnClass: btnClass,
+    };
   };
 
   const ctxValue = {
@@ -94,8 +98,8 @@ export function NavbarContextProvider({ children }) {
     handleClick: handleClick,
     darkModeHandler: darkModeHandler,
     handleModalClick: handleModalClick,
-    getBothModeIcon:getBothModeIcon,
-    footerCopyRightText:footerCopyRightText
+    getBothModeIcon: getBothModeIcon,
+    footerCopyRightText: footerCopyRightText,
   };
 
   return (
