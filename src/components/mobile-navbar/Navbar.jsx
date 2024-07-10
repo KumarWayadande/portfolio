@@ -39,8 +39,8 @@ export default function Navbar() {
               <NavItem
                 key={item.id}
                 content={item.content}
+                path={item.path}
                 isBottomBorder={item.isBottomBorder}
-                component={item.component}
               />
             );
           })}

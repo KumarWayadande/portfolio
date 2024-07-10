@@ -17,9 +17,8 @@ export default function TopNavbarContainer() {
             return (
               <NavbarItem
                 key={item.id}
-                component={item.component}
+                path={item.path}
                 navbarHeading={item.navbarHeading}
-                componentName={item.componentName}
               />
             );
           })}

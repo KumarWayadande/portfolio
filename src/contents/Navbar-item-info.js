@@ -1,38 +1,27 @@
-import ArticleContainer from "../components/article-components/ArticleContainer";
-import ProjectContainer from "../components/project-components/ProjectContainer";
-import Speaking from "../components/speaking-components/Speaking";
-import Uses from "../components/tools-components/ToolContainer";
-import LandingPage from "../components/utility components/LandingPage";
-
 export const NAVBAR_ITEM_INFO = [
   {
-    id:"NAVBAR_ITEM_01",
-    component: LandingPage,
+    id: "NAVBAR_ITEM_01",
     navbarHeading: "About",
-    componentName: "LandingPage",
+    path: "",
   },
   {
-    id:"NAVBAR_ITEM_02",
-    component: ArticleContainer,
+    id: "NAVBAR_ITEM_02",
     navbarHeading: "Articles",
-    componentName: "ArticleContainer",
+    path: "articles",
   },
   {
-    id:"NAVBAR_ITEM_03",
-    component: ProjectContainer,
+    id: "NAVBAR_ITEM_03",
     navbarHeading: "Projects",
-    componentName: "ProjectContainer",
+    path: "projects",
   },
   {
-    id:"NAVBAR_ITEM_04",
-    component: Speaking,
+    id: "NAVBAR_ITEM_04",
     navbarHeading: "Speaking",
-    componentName: "Speaking",
+    path: "speaking",
   },
   {
-    id:"NAVBAR_ITEM_05",
-    component: Uses,
+    id: "NAVBAR_ITEM_05",
     navbarHeading: "Uses",
-    componentName: "Uses",
+    path: "uses",
   },
 ];

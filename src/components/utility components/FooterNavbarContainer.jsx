@@ -11,9 +11,8 @@ const  FooterNavbarContainer = ({ footerCopyRightText }) => {
           return (
             <NavbarItem
               key={item.id}
-              component={item.component}
+              path={item.path}
               navbarHeading={item.navbarHeading}
-              componentName={item.componentName}
             />
           );
         })}
