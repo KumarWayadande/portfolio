@@ -18,6 +18,7 @@ const router = createBrowserRouter([
         { path: "projects", element: <ProjectContainer /> },
         { path: "speaking", element: <Speaking /> },
         { path: "uses", element: <Uses /> },
+        { path: "error", element: <Error /> },
       ],
     },
   ]);
