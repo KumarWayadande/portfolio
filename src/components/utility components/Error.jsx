@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Error = () => {
-
-  let errorMessage =  "Sorry, we can't find that page. You'll find lots to explore on the home page";
-  let errorStatus =  404;
-  let errorTitle =  "Something's missing.";
+  let errorMessage =
+    "Sorry, we can't find that page. You'll find lots to explore on the home page";
+  let errorStatus = 404;
+  let errorTitle = "Something's missing.";
 
   return (
     <div className="error-container flex flex-col items-center gap-6 my-20">
@@ -13,9 +13,14 @@ const Error = () => {
         {errorTitle}
       </h2>
       <span className="text-stone-500 font-thin text-xl text-center">
-       {errorMessage}
+        {errorMessage}
       </span>
-      <Link to="/" className="bg-[#14b8a6] font-normal hover:bg-[#119787] text-white py-2 px-3 rounded-md">Back to Homepage</Link>
+      <Link
+        to="/"
+        className="bg-[#14b8a6] font-normal hover:bg-[#119787] text-white py-2 px-3 rounded-md"
+      >
+        Back to Homepage
+      </Link>
     </div>
   );
 };
