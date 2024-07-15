@@ -5,6 +5,7 @@ import ArticleDate from "./ArticleDate";
 import ArticleHeading from "./ArticleHeading";
 
 const Article = (prop) => {
+  // console.log(prop.date);
   return (
     <div className="article-row flex flex-col md:flex-row">
       <ArticleDate articleDate={prop.date} />
