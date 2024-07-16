@@ -7,7 +7,7 @@ import ArticleHeading from "./ArticleHeading";
 const Article = (prop) => {
   return (
     <div className="article-row flex flex-col md:flex-row">
-      <ArticleDate articleDate={prop.date} />
+      <ArticleDate articleDate={prop.articleDate} />
       <ArticleContentsContainer>
         <ArticleHeading articleHeading={prop.articleHeading} />
         <ArticleContents article={prop.article} />

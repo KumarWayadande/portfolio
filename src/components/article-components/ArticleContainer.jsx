@@ -2,9 +2,12 @@ import Article from "./Article";
 import Heading from "../utility components/Heading.jsx";
 import HeadingContainer from "../utility components/HeadingContainer.jsx";
 import SubHeading from "../utility components/SubHeading.jsx";
-import ARTICLES from "../../contents/articles-info.js";
-
+import axios from "axios";
+import { useLoaderData } from "react-router-dom";
 const ArticleContainer = () => {
+  const { data } = useLoaderData();
+  const { articles: ARTICLES } = data;
+
   return (
     <div className="article-container my-20">
       <HeadingContainer>
@@ -31,8 +34,10 @@ const ArticleContainer = () => {
 
 export default ArticleContainer;
 
-
-
-export function loader(){
-
+export async function loader() {
+  try {
+    return await axios.get("http://localhost:3000/articles");
+  } catch (err) {
+    throw new Error(err.message, { status: err.status });
+  }
 }

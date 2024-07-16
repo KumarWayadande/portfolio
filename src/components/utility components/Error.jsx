@@ -1,10 +1,21 @@
-import { Link } from "react-router-dom";
-
+import { Link, useRouteError } from "react-router-dom";
 const Error = () => {
+
+  const error = useRouteError();
+
   let errorMessage =
     "Sorry, we can't find that page. You'll find lots to explore on the home page";
-  let errorStatus = 404;
+  let errorStatus = 500;
   let errorTitle = "Something's missing.";
+
+  if(error.message){
+    errorMessage = error.message;
+  }
+
+  if(error.status === 404){
+    errorStatus = 404;
+    errorTitle = "Resource not found!!!";
+  }
 
   return (
     <div className="error-container flex flex-col items-center gap-6 my-20">
