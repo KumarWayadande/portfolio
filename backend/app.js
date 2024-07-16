@@ -1,14 +1,18 @@
-import bodyParser from 'body-parser';
-import express from 'express';
-
+import bodyParser from "body-parser";
+import express from "express";
+import articleRoute from "./routes/article.js";
 const app = express();
 
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-    console.log("Backend Connected");
-    res.send("<h2>Backend Connected </h2>")
-})
+app.use("/articles", articleRoute);
+
+
+app.use((error, req, res) => {
+  const message = error.message || "Something went wrong!!!";
+  const status = error.status || 500;
+  res.status(status).json({ message: message });
+});
 
 app.listen(3000);

@@ -4,7 +4,7 @@ const ARTICLES = [
     date: new Date("January 25 2015"),
     articleHeading: "Crafting a design system for a multiplanetary future",
     article:
-      " Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.",
+      "Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.",
   },
   {
     id: "ARTICLE_02",

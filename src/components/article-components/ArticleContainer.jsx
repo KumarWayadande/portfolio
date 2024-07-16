@@ -3,6 +3,7 @@ import Heading from "../utility components/Heading.jsx";
 import HeadingContainer from "../utility components/HeadingContainer.jsx";
 import SubHeading from "../utility components/SubHeading.jsx";
 import ARTICLES from "../../contents/articles-info.js";
+
 const ArticleContainer = () => {
   return (
     <div className="article-container my-20">
@@ -29,3 +30,9 @@ const ArticleContainer = () => {
 };
 
 export default ArticleContainer;
+
+
+
+export function loader(){
+
+}
