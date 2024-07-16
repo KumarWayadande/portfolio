@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ArticleButton from "./ArticleButton";
 import ArticleContents from "./ArticleContents";
 import ArticleContentsContainer from "./ArticleContentsContainer";
@@ -8,11 +9,13 @@ const Article = (prop) => {
   return (
     <div className="article-row flex flex-col md:flex-row">
       <ArticleDate articleDate={prop.articleDate} />
+      <Link to={`${prop.id}`}>
       <ArticleContentsContainer>
         <ArticleHeading articleHeading={prop.articleHeading} />
         <ArticleContents article={prop.article} />
         <ArticleButton />
       </ArticleContentsContainer>
+      </Link>
     </div>
   );
 };
