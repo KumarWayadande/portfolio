@@ -10,7 +10,7 @@ import RootLayout from "./RootLayout";
 import Error from "../utility components/Error.jsx";
 import SingleArticle, {
   loader as articleLoader,
-} from "../article-components/SingleArticle.jsx";
+} from "../article-components/single-article/SingleArticle.jsx";
 
 const router = createBrowserRouter([
   {
