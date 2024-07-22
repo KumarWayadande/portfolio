@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import ArticleBackButton from "./ArticleBackBtn";
 import Heading from "./Heading";
 import Contents from "./Contents";
-import banner from "../../../../public/aero_function_banner-3.png";
+import banner from "../../../assets/aero_function_banner-3.png";
 import Date from "./Date";
 import ExtLink from "./ExtLink";
 import CodeEditor from "./CodeEditor";

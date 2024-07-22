@@ -11,6 +11,7 @@ import Error from "../utility components/Error.jsx";
 import SingleArticle, {
   loader as articleLoader,
 } from "../article-components/single-article/SingleArticle.jsx";
+import Editor from "../editor/Main.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: "speaking", element: <Speaking /> },
       { path: "uses", element: <Uses /> },
       { path: "error", element: <Error /> },
+      { path: "create", element: <Editor /> }
     ],
   },
 ]);
