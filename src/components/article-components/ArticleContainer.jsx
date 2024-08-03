@@ -34,6 +34,7 @@ const ArticleContainer = () => {
 
 export default ArticleContainer;
 
+// eslint-disable-next-line react-refresh/only-export-components
 export async function loader() {
   try {
     return await axios.get("http://localhost:3000/articles", {
