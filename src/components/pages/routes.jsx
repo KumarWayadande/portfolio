@@ -3,6 +3,7 @@ import ArticleContainer, {
   loader as articlesLoader,
 } from "../article-components/ArticleContainer";
 import ProjectContainer from "../project-components/ProjectContainer";
+import Main from "../editor/Main.jsx";
 import Speaking from "../speaking-components/Speaking";
 import Uses from "../tools-components/ToolContainer";
 import LandingPage from "../utility components/LandingPage";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       { path: "create", element: <Editor /> }
     ],
   },
+  {
+    path:"/create",
+    element:<Main />
+  }
 ]);
 
 export default router;

@@ -23,7 +23,9 @@ export default function SingleArticle() {
       </div>
       <div className="article-contents-container max-w-2xl basis-10/12">
         <Date />
-        <Heading extraClasses="mb-15">Understanding Arrow Functions in JavaScript</Heading>
+        <Heading extraClasses="mb-15">
+          Understanding Arrow Functions in JavaScript
+        </Heading>
         <Contents>
           The{" "}
           <ExtLink link="http://www.ecma-international.org/ecma-262/6.0/">
@@ -92,51 +94,75 @@ function sum(a, b){
         </CodeEditor>
         <Contents>Running this code would give the following output:</Contents>
         <CodeEditor isOutput>3</CodeEditor>
-        <Contents>You can find the name of the function by logging the function itself:</Contents>
+        <Contents>
+          You can find the name of the function by logging the function itself:
+        </Contents>
         <CodeEditor>{`console.log(sum);`}</CodeEditor>
         <Contents>This will return the function, along with its name:</Contents>
         <CodeEditor isOutput>{`ƒ sum(a, b) {
     return a + b
 }`}</CodeEditor>
-        <Contents>A function expression is a function that is not pre-loaded into the execution context, and only runs when the code encounters it. Function expressions are usually assigned to a variable, and can be anonymous, meaning the function has no name.</Contents>
-        <Contents>In this example, write the same <strong>sum</strong> function as an anonymous function expression:</Contents>
+        <Contents>
+          A function expression is a function that is not pre-loaded into the
+          execution context, and only runs when the code encounters it. Function
+          expressions are usually assigned to a variable, and can be anonymous,
+          meaning the function has no name.
+        </Contents>
+        <Contents>
+          In this example, write the same <strong>sum</strong> function as an
+          anonymous function expression:
+        </Contents>
         <CodeEditor>{`const sum = function (a, b) {
     return a + b
 }`}</CodeEditor>
-      <Contents>You`&apos;`ve now assigned the anonymous function to the <var>sum</var> constant. Attempting to execute the function before it is declared will result in an error:</Contents>
-      <CodeEditor>
-        {
-          `sum(1, 2)
+        <Contents>
+          You`&apos;`ve now assigned the anonymous function to the{" "}
+          <var>sum</var> constant. Attempting to execute the function before it
+          is declared will result in an error:
+        </Contents>
+        <CodeEditor>
+          {`sum(1, 2)
 
 const sum = function (a, b) {
     return a + b
-}`
-        }
-      </CodeEditor>
-      <Contents>Running this will give:</Contents>
-      <CodeEditor isOutput>{`Uncaught ReferenceError: Cannot access 'sum' before initialization`}</CodeEditor>
-      <Contents>
-      Also, note that the function does not have a named identifier. To illustrate this, write the same anonymous function assigned to <var>sum</var>, then log <var>sum</var> to the console:
-      </Contents>
-      <CodeEditor>
-        {
-          `const sum = function (a, b) {
+}`}
+        </CodeEditor>
+        <Contents>Running this will give:</Contents>
+        <CodeEditor
+          isOutput
+        >{`Uncaught ReferenceError: Cannot access 'sum' before initialization`}</CodeEditor>
+        <Contents>
+          Also, note that the function does not have a named identifier. To
+          illustrate this, write the same anonymous function assigned to{" "}
+          <var>sum</var>, then log <var>sum</var> to the console:
+        </Contents>
+        <CodeEditor>
+          {`const sum = function (a, b) {
   return a + b
 }
 
-console.log(sum)`
-        }
-      </CodeEditor>
-      <Contents>This will show you the following:</Contents>
-      <CodeEditor isOutput>{`ƒ (a, b) {
+console.log(sum)`}
+        </CodeEditor>
+        <Contents>This will show you the following:</Contents>
+        <CodeEditor isOutput>{`ƒ (a, b) {
   return a + b
 }`}</CodeEditor>
-    <Contents>The value of sum is an anonymous function, not a named function.</Contents>
-    <Contents>You can name <strong>function</strong> expressions written with the function keyword, but this is not popular in practice. One reason you might want to name a function expression is to make error stack traces easier to debug.</Contents>
-    <Contents>Consider the following function, which uses an <ExtLink>if statement</ExtLink> to throw an error if the function parameters are missing:</Contents>
-    <CodeEditor>
-      {
-`const sum = function namedSumFunction(a, b) {
+        <Contents>
+          The value of sum is an anonymous function, not a named function.
+        </Contents>
+        <Contents>
+          You can name <strong>function</strong> expressions written with the
+          function keyword, but this is not popular in practice. One reason you
+          might want to name a function expression is to make error stack traces
+          easier to debug.
+        </Contents>
+        <Contents>
+          Consider the following function, which uses an{" "}
+          <ExtLink>if statement</ExtLink> to throw an error if the function
+          parameters are missing:
+        </Contents>
+        <CodeEditor>
+          {`const sum = function namedSumFunction(a, b) {
     if (!a || !b) 
       throw new Error('Parameters are required.')
     
@@ -144,23 +170,42 @@ console.log(sum)`
 }
 
 sum();`}
-    </CodeEditor>
-    <Contents>The highlighted section gives the function a name, and then the function uses the <strong>or ||</strong> operator to throw an error <ExtLink>object</ExtLink> if either of the parameters is missing.</Contents>
-    
-    <Contents>Running this code will give you the following:</Contents>
-    <CodeEditor isOutput>{
-`Uncaught Error: Parameters are required.
+        </CodeEditor>
+        <Contents>
+          The highlighted section gives the function a name, and then the
+          function uses the <strong>or ||</strong> operator to throw an error{" "}
+          <ExtLink>object</ExtLink> if either of the parameters is missing.
+        </Contents>
+
+        <Contents>Running this code will give you the following:</Contents>
+        <CodeEditor isOutput>{`Uncaught Error: Parameters are required.
   at namedSumFunction (<anonymous>:3:23)
   at <anonymous>:1:1`}</CodeEditor>
-    <Contents>In this case, naming the function gives you a quick idea of where the error is.</Contents>
-    <Contents>An <ExtLink>arrow function expression</ExtLink> is an anonymous function expression written with the &quot;fat arrow&quot; syntax (=&gt;).</Contents>
-    <Contents>Rewrite the <strong>sum</strong> function with arrow function syntax:</Contents>
-    <CodeEditor>
-{`const sum = (a, b) => {
+        <Contents>
+          In this case, naming the function gives you a quick idea of where the
+          error is.
+        </Contents>
+        <Contents>
+          An <ExtLink>arrow function expression</ExtLink> is an anonymous
+          function expression written with the &quot;fat arrow&quot; syntax
+          (=&gt;).
+        </Contents>
+        <Contents>
+          Rewrite the <strong>sum</strong> function with arrow function syntax:
+        </Contents>
+        <CodeEditor>
+          {`const sum = (a, b) => {
    return a + b
 }`}
-    </CodeEditor>
-    <Contents>Like traditional function expressions, arrow functions are not hoisted, and so you cannnot call them before you declare them. They are also always anonymous—there is no way to name an arrow function. In the next section, you will explore more of the syntactical and practical differences between arrow functions and traditional functions.</Contents>
+        </CodeEditor>
+        <Contents>
+          Like traditional function expressions, arrow functions are not
+          hoisted, and so you cannnot call them before you declare them. They
+          are also always anonymous—there is no way to name an arrow function.
+          In the next section, you will explore more of the syntactical and
+          practical differences between arrow functions and traditional
+          functions.
+        </Contents>
       </div>
     </div>
   );
