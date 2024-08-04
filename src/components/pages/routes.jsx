@@ -11,7 +11,7 @@ import Error from "../utility components/Error.jsx";
 import SingleArticle, {
   loader as articleLoader,
 } from "../article-components/single-article/SingleArticle.jsx";
-import Demo from "./Demo.jsx";
+// import Demo from "./Demo.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "", element: <LandingPage /> },
-      { path: "/demo", element: <Demo /> },
+      // { path: "/demo", element: <Demo /> },
       {
         path: "articles",
         element: <ArticleContainer />,
