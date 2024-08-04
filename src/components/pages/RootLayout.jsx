@@ -12,7 +12,9 @@ export default function RootLayout(prop) {
     <>
       {showModal && <Navbar />} {/* Mobile Navbar */}
       <div className="dark:bg-black full-width-container w-[100%] overflow-hidden selection:bg-[#1fbcaa] selection:text-white">
-        <div className="container bg-white dark:bg-[#18181b] max-w-7xl mx-auto md:px-20 px-6  h-max-full inset-0 py-2">
+        {/* <div className="container bg-white dark:bg-[#18181b] max-w-7xl mx-auto md:px-20 px-6  h-max-full inset-0 py-2"> */}
+        {/* <div className="container bg-white dark:bg-[#18181b] max-w-7xl mx-auto md:px-20 px-6  h-max-full inset-0 py-2"> */}
+        <div className="container bg-white dark:bg-[#18181b] max-w-7xl mx-auto h-max-full inset-0 py-2">
           <TopNavbarContainer />
           {prop.children}
           {/* Middle data page */}
