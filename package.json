@@ -15,7 +15,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@mui/material": "^5.15.19",
+    "@mui/base": "^5.0.0-beta.40",
     "axios": "^1.7.2",
     "html-react-parser": "^5.1.12",
     "quill": "^2.0.2",

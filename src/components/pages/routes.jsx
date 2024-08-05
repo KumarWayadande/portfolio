@@ -3,7 +3,6 @@ import ArticleContainer, {
   loader as articlesLoader,
 } from "../article-components/ArticleContainer";
 import ProjectContainer from "../project-components/ProjectContainer";
-import Main from "../editor/Main.jsx";
 import Speaking from "../speaking-components/Speaking";
 import Uses from "../tools-components/ToolContainer";
 import LandingPage from "../utility components/LandingPage";
@@ -12,7 +11,7 @@ import Error from "../utility components/Error.jsx";
 import SingleArticle, {
   loader as articleLoader,
 } from "../article-components/single-article/SingleArticle.jsx";
-import Editor from "../editor/Main.jsx";
+import Editor from "../editor/Editor.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,10 +37,7 @@ const router = createBrowserRouter([
       { path: "create", element: <Editor /> }
     ],
   },
-  {
-    path:"/create",
-    element:<Main />
-  }
+  
 ]);
 
 export default router;

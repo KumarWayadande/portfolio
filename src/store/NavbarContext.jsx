@@ -90,7 +90,6 @@ export function NavbarContextProvider({ children }) {
     };
   };
 
-
   const ctxValue = {
     currentPage: currentPage,
     darkMode: darkMode,
