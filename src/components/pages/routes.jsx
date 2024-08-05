@@ -12,6 +12,7 @@ import SingleArticle, {
   loader as articleLoader,
 } from "../article-components/single-article/SingleArticle.jsx";
 import Editor from "../editor/Editor.jsx";
+import ArticleRootLayout from "./ArticleRootLayout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,22 +23,27 @@ const router = createBrowserRouter([
       { path: "", element: <LandingPage /> },
       {
         path: "articles",
-        element: <ArticleContainer />,
-        loader: articlesLoader,
-      },
-      {
-        path: "articles/:id",
-        element: <SingleArticle />,
-        loader: articleLoader,
+        element: <ArticleRootLayout />,
+        children: [
+          {
+            index:true,
+            element:<ArticleContainer />,
+            loader:articlesLoader
+          },
+          {
+            path: ":id",
+            element: <SingleArticle />,
+            loader: articleLoader,
+          },
+        ],
       },
       { path: "projects", element: <ProjectContainer /> },
       { path: "speaking", element: <Speaking /> },
       { path: "uses", element: <Uses /> },
       { path: "error", element: <Error /> },
-      { path: "create", element: <Editor /> }
+      { path: "create", element: <Editor /> },
     ],
   },
-  
 ]);
 
 export default router;
