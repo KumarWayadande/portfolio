@@ -2,7 +2,6 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Parser from "html-react-parser";
-// import "./styles.css";
 import Contents from "../article-components/single-article/Contents";
 import Heading from "../article-components/single-article/Heading";
 import SubHeading from "../article-components/single-article/SubHeading";
@@ -31,15 +30,15 @@ const formats = [
   "link",
 ];
 
+const getParsedValues = () => {
+
+}
+
 export default function Editor() {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("Demo Title will look like this");
   const parsedValues = Parser(value);
   let contents = "";
-
-  // const handleSubmitDraft = () => {
-
-  // }
 
   if (parsedValues && !parsedValues.length) {
     contents = parsedValues;
@@ -81,9 +80,17 @@ export default function Editor() {
           name="title"
           id="title"
         />
+        <input
+          type="file"
+          onChange={handleChangeTitle}
+          className="outline-none focus:border-[#1fb9a7] dark:text-stone-200 dark:border-gray-700 dark:shadow-[#252529] dark:bg-[#252529] w-[100%] rounded-md shadow-md shadow-slate-300 py-2 border my-3 px-2 border-gray-300"
+          placeholder="Title of the Article"
+          name="title"
+          id="title"
+        />
         <div className="editor-container">
           <ReactQuill
-            className=" [&_div:nth-child(1)]:rounded-t-lg rounded-lg [&_div:nth-child(2)]:rounded-b-lg [&_div:nth-child(2)]:h-[30rem] shadow-md dark:text-gray-100 dark:bg-gray-900"
+            className=" dark:[&_div:nth-child(1)]:border-gray-700 [&_div:nth-child(1)]:rounded-t-md dark:[&_div:nth-child(1)]:bg-[#252529]  &_div:nth-child(1)]:rounded-t-lg rounded-lg [&_div:nth-child(2)]:rounded-b-lg  dark:[&_div:nth-child(2)]:border-gray-700 [&_div:nth-child(2)]:h-[30rem] shadow-md dark:text-gray-100 dark:bg-gray-900"
             theme="snow"
             value={value}
             onChange={setValue}
