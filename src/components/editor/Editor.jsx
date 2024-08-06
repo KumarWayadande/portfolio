@@ -31,8 +31,7 @@ const formats = [
 ];
 
 const getFormattedText = (parsedValues) => {
-  let contents = [
-    parsedValues.map((tag) => {
+  let contents = parsedValues.map((tag) => {
       switch (tag.type) {
         case "p":
           return <Contents key={tag.key}>{tag.props.children}</Contents>;
@@ -45,8 +44,7 @@ const getFormattedText = (parsedValues) => {
         default:
           return tag.props.children;
       }
-    }),
-  ];
+    });
 
   return contents;
 };
@@ -88,20 +86,24 @@ export default function Editor() {
 
   const handleSubmit = async () => {
     const imgUrl = file ? await upload() : "";
-    // console.log(imgUrl);
+    console.log(contents);
+    console.log(JSON.stringify(contents));
 
-    console.log({
-      title: title,
-      file: imgUrl,
-      content: contents,
-    });
-
+    
+    const dataTobeSent = {
+      title,
+      contents:JSON.stringify(contents),
+      articleImg: file ? imgUrl : "",
+      articleDate: new Date(),
+    };
+    
+    console.log(dataTobeSent);
     try {
       const res = await axios.post(`http://localhost:3000/articles`, {
         title,
         contents: contents,
         articleImg: file ? imgUrl : "",
-        articleDate: new Date()
+        articleDate: new Date(),
       });
       // navigate("/")
       console.log(res);
