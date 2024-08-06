@@ -9,6 +9,8 @@ import CodeEditor from "../article-components/single-article/CodeEditor";
 import Image from "../article-components/single-article/Image";
 import banner from "../../assets/aero_function_banner-3.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const modules = {
   toolbar: [
     [{ header: [1, 2, false] }],
@@ -32,19 +34,19 @@ const formats = [
 
 const getFormattedText = (parsedValues) => {
   let contents = parsedValues.map((tag) => {
-      switch (tag.type) {
-        case "p":
-          return <Contents key={tag.key}>{tag.props.children}</Contents>;
-        case "h2":
-          return <SubHeading key={tag.key}>{tag.props.children}</SubHeading>;
-        case "h1":
-          return <Heading key={tag.key}>{tag.props.children}</Heading>;
-        case "pre":
-          return <CodeEditor key={tag.key}>{tag.props.children}</CodeEditor>;
-        default:
-          return tag.props.children;
-      }
-    });
+    switch (tag.type) {
+      case "p":
+        return <Contents key={tag.key}>{tag.props.children}</Contents>;
+      case "h2":
+        return <SubHeading key={tag.key}>{tag.props.children}</SubHeading>;
+      case "h1":
+        return <Heading key={tag.key}>{tag.props.children}</Heading>;
+      case "pre":
+        return <CodeEditor key={tag.key}>{tag.props.children}</CodeEditor>;
+      default:
+        return tag.props.children;
+    }
+  });
 
   return contents;
 };
@@ -53,7 +55,11 @@ export default function Editor() {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("Demo Title will look like this");
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
+  // console.log(JSON.stringify(value));
   const parsedValues = Parser(value);
+  // console.log(parsedValues);
+
   let contents = "";
   if (parsedValues && !parsedValues.length) {
     contents = parsedValues;
@@ -69,7 +75,6 @@ export default function Editor() {
     setFile(e.target.files[0]);
   };
 
-  // console.log(file);
   const upload = async () => {
     try {
       const formData = new FormData();
@@ -86,30 +91,29 @@ export default function Editor() {
 
   const handleSubmit = async () => {
     const imgUrl = file ? await upload() : "";
-    console.log(contents);
-    console.log(JSON.stringify(contents));
+    const tempDate = new Date();
+    const day = tempDate.getDay();
+    const month = tempDate.getMonth() + 1;
+    const year = tempDate.getFullYear();
+    const finalDate = month + "/" + day + "/" + year;
 
-    
-    const dataTobeSent = {
-      title,
-      contents:JSON.stringify(contents),
-      articleImg: file ? imgUrl : "",
-      articleDate: new Date(),
-    };
-    
-    console.log(dataTobeSent);
+    console.log(finalDate);
+
     try {
+      console.log("Hello")
       const res = await axios.post(`http://localhost:3000/articles`, {
         title,
-        contents: contents,
+        contents: value,
         articleImg: file ? imgUrl : "",
-        articleDate: new Date(),
+        articleDate: finalDate,
       });
-      // navigate("/")
+
       console.log(res);
+      navigate("/articles");
     } catch (err) {
       console.log(err);
     }
+
   };
 
   return (

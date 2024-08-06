@@ -11,8 +11,8 @@ const Article = (prop) => {
       <ArticleDate articleDate={prop.articleDate} />
       <Link to={`${prop.id}`}>
       <ArticleContentsContainer>
-        <ArticleHeading articleHeading={prop.articleHeading} />
-        <ArticleContents article={prop.article} />
+        <ArticleHeading articleHeading={prop.title} />
+        <ArticleContents article={prop.contents} />
         <ArticleButton />
       </ArticleContentsContainer>
       </Link>

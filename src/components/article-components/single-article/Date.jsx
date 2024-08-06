@@ -1,8 +1,10 @@
-export default function Date() {
+import formatGeneralDate from "../../utility components/formatted-date";
+
+export default function Date(prop) {
   return (
     <p className="article-date text-stone-300 dark:text-stone-600 font-semibold text-[100%] mb-10">
       <span className="mr-3 font-bold h-3">|</span>
-      September 5, 2022
+      {formatGeneralDate(prop.articleDate)}
     </p>
   );
 }
