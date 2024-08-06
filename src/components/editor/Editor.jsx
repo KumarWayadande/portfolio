@@ -1,16 +1,15 @@
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import Parser from "html-react-parser";
-import Contents from "../article-components/single-article/Contents";
+import { getFormattedText } from "../utility components/Parser";
 import Heading from "../article-components/single-article/Heading";
-import SubHeading from "../article-components/single-article/SubHeading";
-import CodeEditor from "../article-components/single-article/CodeEditor";
 import Image from "../article-components/single-article/Image";
 import banner from "../../assets/aero_function_banner-3.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Parser from "html-react-parser";
 
+// Custom modules for Quill Editor
 const modules = {
   toolbar: [
     [{ header: [1, 2, false] }],
@@ -20,6 +19,7 @@ const modules = {
   ],
 };
 
+// Custom formats for Quill Editor
 const formats = [
   "header",
   "bold",
@@ -32,41 +32,47 @@ const formats = [
   "link",
 ];
 
-const getFormattedText = (parsedValues) => {
-  let contents = parsedValues.map((tag) => {
-    switch (tag.type) {
-      case "p":
-        return <Contents key={tag.key}>{tag.props.children}</Contents>;
-      case "h2":
-        return <SubHeading key={tag.key}>{tag.props.children}</SubHeading>;
-      case "h1":
-        return <Heading key={tag.key}>{tag.props.children}</Heading>;
-      case "pre":
-        return <CodeEditor key={tag.key}>{tag.props.children}</CodeEditor>;
-      default:
-        return tag.props.children;
-    }
-  });
+const getCurrentDate = () => {
+  const tempDate = new Date();
+  const day = tempDate.getDay();
+  const month = tempDate.getMonth() + 1;
+  const year = tempDate.getFullYear();
+  const finalDate = month + "/" + day + "/" + year;
 
-  return contents;
+  return finalDate;
 };
 
-export default function Editor() {
-  const [value, setValue] = useState("");
-  const [title, setTitle] = useState("Demo Title will look like this");
-  const [file, setFile] = useState(null);
-  const navigate = useNavigate();
-  // console.log(JSON.stringify(value));
-  const parsedValues = Parser(value);
-  // console.log(parsedValues);
+// Function to upload an image to the server
+const uploadImage = async (file) => {
+  try {
+    const formData = new FormData();
+    formData.append("file", file || null);
+    const res = await axios.post("http://localhost:3000/api/upload", formData);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-  let contents = "";
+// Article Editor to create an article
+export default function Editor() {
+  const [value, setValue] = useState(""); // contetns
+  const [title, setTitle] = useState("Demo Title will look like this"); // heading
+  const [file, setFile] = useState(null); // image file
+  const navigate = useNavigate();
+  let contents = ""; // holds contents
+
+  // Parsed array of html elements
+  const parsedValues = Parser(value);
+
   if (parsedValues && !parsedValues.length) {
     contents = parsedValues;
   }
   if (parsedValues && parsedValues.length > 0) {
+    // Parsed array of react elements
     contents = getFormattedText(parsedValues);
   }
+
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -75,45 +81,23 @@ export default function Editor() {
     setFile(e.target.files[0]);
   };
 
-  const upload = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file || null);
-      const res = await axios.post(
-        "http://localhost:3000/api/upload",
-        formData
-      );
-      return res.data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+  // On submit this function sends data to the server
   const handleSubmit = async () => {
-    const imgUrl = file ? await upload() : "";
-    const tempDate = new Date();
-    const day = tempDate.getDay();
-    const month = tempDate.getMonth() + 1;
-    const year = tempDate.getFullYear();
-    const finalDate = month + "/" + day + "/" + year;
-
-    console.log(finalDate);
+    const finalDate = getCurrentDate();
+    const imgUrl = file ? await uploadImage(file) : "";
 
     try {
-      console.log("Hello")
-      const res = await axios.post(`http://localhost:3000/articles`, {
+      await axios.post(`http://localhost:3000/articles`, {
         title,
         contents: value,
         articleImg: file ? imgUrl : "",
         articleDate: finalDate,
       });
 
-      console.log(res);
-      navigate("/articles");
+      navigate("/articles"); // navigate to articles page
     } catch (err) {
       console.log(err);
     }
-
   };
 
   return (

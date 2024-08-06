@@ -4,7 +4,9 @@ import ArticleBackButton from "./ArticleBackBtn";
 import Heading from "./Heading";
 import Date from "./Date";
 import Image from "./Image";
-import { getFormattedText } from "./parser";
+import Parser from "html-react-parser";
+import { getFormattedText } from "../../utility components/Parser";
+
 
 // Component that renders a single article
 // Input : Data is taken from loader of this component which is then parsed using getFormattedText()
@@ -14,7 +16,7 @@ export default function SingleArticle() {
   const { data } = useLoaderData();
 
   // Parse raw data into array of react elements
-  const parsedContents = getFormattedText(data.article.contents);
+  const parsedContents = getFormattedText(Parser(data.article.contents));
 
   if (!data.article) return <h1>Article not found</h1>;
 

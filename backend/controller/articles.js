@@ -27,7 +27,7 @@ export async function get(articleId) {
   }
 }
 
-export const addPost = async (req) => {
+export const addPost = async (req, res) => {
   const q =
     "Insert into articles(`title`, `contents`, `articleImg`, `articleDate`) values(?)";
 
@@ -39,8 +39,8 @@ export const addPost = async (req) => {
   ];
 
   try {
-    const response = await db.query(q, [values]);
-    return response.status(200).json("Article added successfully");
+    await db.query(q, [values]);
+    return res.status(200).json("Article added successfully");
   } catch (err) {
     throw new Error(err);
   }

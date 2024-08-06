@@ -1,14 +1,12 @@
-import CodeEditor from "./CodeEditor";
-import Contents from "./Contents";
-import Heading from "./Heading";
-import SubHeading from "./SubHeading";
-import Parser from "html-react-parser"; // To convert an html string into an array of tags
+import CodeEditor from "../article-components/single-article/CodeEditor";
+import Contents from "../article-components/single-article/Contents";
+import Heading from "../article-components/single-article/Heading";
+import SubHeading from "../article-components/single-article/SubHeading";
 
 // Utility Function that returns an array of react elements which created by converting
 // standard html elements using parser
-export const getFormattedText = (rawContents) => {
+export const getFormattedText = (parsedValues) => {
   // Parse standard html contents (string form) to array form of html elements
-  const parsedValues = Parser(rawContents);
 
   // Check
   // If parsedValues is an array then convert every tag to react elements
