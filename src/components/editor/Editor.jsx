@@ -54,6 +54,9 @@ export default function Editor() {
   const [title, setTitle] = useState("Demo Title will look like this");
   const [file, setFile] = useState(null);
   const parsedValues = Parser(value);
+  console.log(parsedValues);
+  console.log(value);
+  
   let contents = "";
   if (parsedValues && !parsedValues.length) {
     contents = parsedValues;
@@ -87,17 +90,7 @@ export default function Editor() {
   const handleSubmit = async () => {
     const imgUrl = file ? await upload() : "";
     console.log(contents);
-    console.log(JSON.stringify(contents));
-
     
-    const dataTobeSent = {
-      title,
-      contents:JSON.stringify(contents),
-      articleImg: file ? imgUrl : "",
-      articleDate: new Date(),
-    };
-    
-    console.log(dataTobeSent);
     try {
       const res = await axios.post(`http://localhost:3000/articles`, {
         title,

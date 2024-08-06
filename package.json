@@ -18,6 +18,7 @@
     "@mui/base": "^5.0.0-beta.40",
     "axios": "^1.7.2",
     "html-react-parser": "^5.1.12",
+    "mongoose": "^8.5.2",
     "quill": "^2.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
