@@ -27,9 +27,7 @@ export async function get(articleId) {
   }
 }
 
-export const addPost = async (req, res) => {
-  console.log("Logged");
-
+export const addPost = async (req) => {
   const q =
     "Insert into articles(`title`, `contents`, `articleImg`, `articleDate`) values(?)";
 
@@ -39,11 +37,11 @@ export const addPost = async (req, res) => {
     req.body.articleImg,
     req.body.articleDate,
   ];
-  // console.log(values);
 
-  db.query(q, [values], (err) => {
-    if (err) return res.status(500).json("Post couldnt be created");
-
-    return res.status(200).json("Post added successfully");
-  });
+  try {
+    const response = await db.query(q, [values]);
+    return response.status(200).json("Article added successfully");
+  } catch (err) {
+    throw new Error(err);
+  }
 };
