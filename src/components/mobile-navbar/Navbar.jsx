@@ -9,7 +9,6 @@ export default function Navbar() {
   const { handleModalClick } = useContext(NavbarContext);
   // handleComponentClick
   return createPortal(
-    // <nav className="md:hidden bg-[#050505e1] backdrop-blur-sm w-[100%]  z-10 absolute">
     <nav
       onClick={handleModalClick}
       className="md:hidden bg-zinc-800/40 fixed backdrop-blur-sm dark:bg-black/80 opacity-100 w-[100%] z-40 inset-0"
