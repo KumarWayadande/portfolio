@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { NavbarContext } from "../../store/NavbarContext";
+import { Link } from "react-router-dom";
 
 export default function NavbarButtons() {
   const {
@@ -27,6 +28,9 @@ export default function NavbarButtons() {
       <button className={btnClass} onClick={darkModeHandler}>
         {btn}
       </button>
+      <Link to={"create"} className={btnClass}>
+        {btn}
+      </Link>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import express from "express";
-import { get, getAll } from "../controller/articles.js";
+import { addPost, get, getAll } from "../controller/articles.js";
 
 const router = express.Router();
 
@@ -25,7 +25,16 @@ router.post("/:id", async (req, res, next) => {
 });
 
 // To add a article
-router.post("/", () => {});
+router.post("/", async (req, res, next) => {
+  try{
+    const response = await addPost(req, res);
+    res.json({message:response});
+  }
+  catch(error){
+    next(error)
+  }
+  
+});
 // To update a specific article
 router.put("/:id", () => {});
 
