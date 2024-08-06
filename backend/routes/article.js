@@ -5,6 +5,7 @@ const router = express.Router();
 
 // To get all the articles
 router.get("/", async (req, res, next) => {
+  
   try {
     const result = await getAll();
     res.json({ articles: result });

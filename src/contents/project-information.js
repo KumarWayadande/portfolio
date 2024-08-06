@@ -4,7 +4,7 @@ const projectInfo = [
   {
     projectHeader: "Mariyan Restaurant",
     projectDescription:
-      "Elegant ambiance, gourmet cuisine, online reservations, special events, exceptional service.",
+      "Elegant ambiance, gourmet cuisine, online reservations, special events, exceptional service.  ambiance, gourmet cuisine, online reservations, special events, exceptional service.  ambiance, gourmet cuisine, online reservations, special events, exceptional service.  ambiance, gourmet cuisine, online reservations, special events, exceptional service.",
     projectLink: "https://github.com/KumarWayadande/mr3",
     projectLogo: projectLogo,
   },

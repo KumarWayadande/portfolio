@@ -21,7 +21,7 @@ const ArticleContainer = () => {
         />
       </HeadingContainer>
 
-      <div className="article-card-container flex flex-col border-l-[1px] dark:border-gray-700 border-b-gray-50 md:w-[80%] sm:pl-5">
+      <div className="article-card-container flex flex-col border-l-[1px] sm:w-[100%] dark:border-gray-700 border-b-gray-50 md:w-[80%] sm:pl-5">
         {/* All articles */}
         {ARTICLES.map((article, index) => {
           return <Article {...article} key={index} />;
@@ -36,7 +36,9 @@ export default ArticleContainer;
 
 export async function loader() {
   try {
-    return await axios.get("http://localhost:3000/articles");
+    return await axios.get("http://localhost:3000/articles", {
+      headers: { "Content-Type": "Applicarion/json" },
+    });
   } catch (err) {
     throw new Error(err.message, { status: err.status });
   }
