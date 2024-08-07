@@ -5,7 +5,6 @@ const router = express.Router();
 
 // To get all the articles
 router.get("/", async (req, res, next) => {
-  
   try {
     const result = await getAll();
     res.json({ articles: result });
@@ -26,14 +25,12 @@ router.post("/:id", async (req, res, next) => {
 
 // To add a article
 router.post("/", async (req, res, next) => {
-  try{
-    const response = await addPost(req, res);
-    res.json({message:response});
+  try {
+    await addPost(req, res);
+    res.json({ message: "Article created successfully" });
+  } catch (error) {
+    next(error);
   }
-  catch(error){
-    next(error)
-  }
-  
 });
 // To update a specific article
 router.put("/:id", () => {});
