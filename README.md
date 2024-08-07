@@ -14,3 +14,8 @@ add Write logo
 add more 2 pages for writing functionality
 add submit button for article
 Add component for 3 line description for article
+
+
+tailwind framework
+
+1] Prelime

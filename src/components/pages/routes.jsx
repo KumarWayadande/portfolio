@@ -13,6 +13,8 @@ import SingleArticle, {
 } from "../article-components/single-article/SingleArticle.jsx";
 import Editor from "../editor/Editor.jsx";
 import ArticleRootLayout from "./ArticleRootLayout.jsx";
+import EditorRootLayout from "./EditorRootLayout.jsx";
+import ArticleDescriptionPage from "../editor/ArticleDescriptionPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +28,9 @@ const router = createBrowserRouter([
         element: <ArticleRootLayout />,
         children: [
           {
-            index:true,
-            element:<ArticleContainer />,
-            loader:articlesLoader
+            index: true,
+            element: <ArticleContainer />,
+            loader: articlesLoader,
           },
           {
             path: ":id",
@@ -41,7 +43,20 @@ const router = createBrowserRouter([
       { path: "speaking", element: <Speaking /> },
       { path: "uses", element: <Uses /> },
       { path: "error", element: <Error /> },
-      { path: "create", element: <Editor /> },
+      {
+        path: "create",
+        element: <EditorRootLayout />,
+        children: [
+          {
+            index: true,
+            element: <ArticleDescriptionPage />,
+          },
+          {
+            path: "write",
+            element: <Editor />,
+          },
+        ],
+      },
     ],
   },
 ]);

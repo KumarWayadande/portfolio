@@ -20,6 +20,7 @@ export async function get(articleId) {
       contents: JSON.parse(results[0].contents),
       articleImg: results[0].articleImg,
       articleDate: results[0].articleDate,
+      description: results[0].description,
     };
     return data;
   } catch (err) {
@@ -29,13 +30,14 @@ export async function get(articleId) {
 
 export const addPost = async (req, res) => {
   const q =
-    "Insert into articles(`title`, `contents`, `articleImg`, `articleDate`) values(?)";
+    "Insert into articles(`title`, `contents`, `articleImg`, `articleDate`, `description`) values(?)";
 
   const values = [
     req.body.title,
     JSON.stringify(req.body.contents),
     req.body.articleImg,
     req.body.articleDate,
+    req.body.description,
   ];
 
   try {
