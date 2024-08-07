@@ -15,7 +15,7 @@ const Article = (prop) => {
         {/* When clicked - navigates to the single detailed article */}
         <ArticleContentsContainer>
           <ArticleHeading articleHeading={prop.title} />
-          <ArticleContents article={prop.contents} />
+          <ArticleContents article={prop.description} />
           <ArticleButton />
         </ArticleContentsContainer>
       </Link>
