@@ -16,6 +16,7 @@ export default function SingleArticle() {
   const { data } = useLoaderData();
 
   // Parse raw data into array of react elements
+  console.log(Parser(data.article.contents));
   const parsedContents = getFormattedText(Parser(data.article.contents));
 
   if (!data.article) return <h1>Article not found</h1>;
