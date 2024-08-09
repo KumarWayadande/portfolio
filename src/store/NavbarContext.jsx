@@ -14,6 +14,7 @@ export const NavbarContext = createContext({
   darkModeHandler: () => {},
   handleModalClick: () => {},
   getBothModeIcon: () => {},
+  onOAuthClick: () => {},
   footerCopyRightText: "",
 });
 
@@ -97,7 +98,7 @@ export function NavbarContextProvider({ children }) {
   // Also returns required classes for the same dark mode icons
   const getBothModeIcon = () => {
     let lightModeBtnClass =
-      "hover:shadow-sm border border-gray-100 rounded-3xl px-3 py-2";
+      "mx-1 hover:shadow-sm border border-gray-100 rounded-3xl px-3 py-2";
     let darkModeBtnClass =
       "dark:bg-[#252529] dark:hover:border-gray-500 dark:border-gray-600 dark:border-[1px] dark:hover:text-stone-400 dark:shadow-none";
     let btn = null;
@@ -114,15 +115,21 @@ export function NavbarContextProvider({ children }) {
     };
   };
 
+  // function to handler google authentication clicks
+  function onOAuthClick() {
+    alert();
+  }
+
   // Value to be shared as context
   const ctxValue = {
-    darkMode: darkMode,
-    showModal: showModal,
-    getDarkModeMenuIcon: getDarkModeMenuIcon,
-    darkModeHandler: darkModeHandler,
-    handleModalClick: handleModalClick,
-    getBothModeIcon: getBothModeIcon,
-    footerCopyRightText: footerCopyRightText,
+    darkMode,
+    showModal,
+    getDarkModeMenuIcon,
+    darkModeHandler,
+    handleModalClick,
+    getBothModeIcon,
+    footerCopyRightText,
+    onOAuthClick,
   };
 
   return (

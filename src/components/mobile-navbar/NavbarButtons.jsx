@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { NavbarContext } from "../../store/NavbarContext";
 import { Link } from "react-router-dom";
+import { IoMdCreate } from "react-icons/io";
+import { FiUserPlus } from "react-icons/fi";
 
 export default function NavbarButtons() {
   const {
@@ -9,11 +11,31 @@ export default function NavbarButtons() {
     getDarkModeMenuIcon,
     darkModeHandler,
     getBothModeIcon,
+    onOAuthClick,
   } = useContext(NavbarContext);
 
-  const {btn, btnClass} = getBothModeIcon();
+  const { btn, btnClass } = getBothModeIcon();
   return (
     <div className="nav-buttons flex justify-end">
+    {/* theme mode button  */}
+      <button className={btnClass} onClick={darkModeHandler}>
+        {btn}
+      </button>
+
+      {/* Write button */}
+      <Link to={"create"} className={`${btnClass} flex`}>
+        <button>
+          <IoMdCreate fontSize="20px" color="#1fbcaa" />
+        </button>
+      </Link>
+
+      {/* Signin button */}
+      <button className={btnClass} onClick={onOAuthClick}>
+        <FiUserPlus fontSize="20px" color="#1fbcaa" />
+      </button>
+
+
+    {/* Menu button */}
       {!showModal && (
         <button
           onClick={handleModalClick}
@@ -25,12 +47,6 @@ export default function NavbarButtons() {
           </span>
         </button>
       )}
-      <button className={btnClass} onClick={darkModeHandler}>
-        {btn}
-      </button>
-      <Link to={"create"} className={btnClass}>
-        {btn}
-      </Link>
     </div>
   );
 }
