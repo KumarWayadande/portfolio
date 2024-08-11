@@ -58,7 +58,8 @@ export function EditorContextProvider(prop) {
   // component that is Editor.jsx
   const onClickHandler = () => {
     const error = validateData();
-    if (error.status) alert(error.title || error.description || error.file);
+    if (error.status)
+      return alert(error.title || error.file || error.description);
     else navigate("write");
   };
 

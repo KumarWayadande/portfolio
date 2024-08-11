@@ -16,7 +16,7 @@ export default function ArticleDescriptionPage() {
     onTitleChangeHandler,
     onFileChangeHandler,
     onClickHandler,
-    setFile
+    setFile,
   } = useContext(EditorContext);
 
   return (
@@ -49,7 +49,12 @@ export default function ArticleDescriptionPage() {
             onFileChangeHandler={onFileChangeHandler}
           />
         )}
-        {file && <FileUpload file={file || "image.ext"} onFileChangeHandler={setFile} />}
+        {file && (
+          <FileUpload
+            file={file || "image.ext"}
+            onFileChangeHandler={setFile}
+          />
+        )}
         <CustomButton label="Next" onClick={onClickHandler} />
       </div>
     </div>

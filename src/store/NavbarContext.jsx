@@ -3,7 +3,8 @@
 import { createContext, useState } from "react";
 import { IoSunny } from "react-icons/io5";
 import { LuMoonStar } from "react-icons/lu";
-
+import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import { app } from "../firebase";
 // Navbar Context
 // Mainly built for navbar
 // Handles footer, dark mode and mobile navbar functionality
@@ -115,9 +116,26 @@ export function NavbarContextProvider({ children }) {
     };
   };
 
+
+  // Google firebase auth configuration
+  const auth = getAuth(app);
+
+
   // function to handler google authentication clicks
-  function onOAuthClick() {
-    alert();
+  async function onOAuthClick() {
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({prompt:"select_account"});
+    let resultsFromGoogle;
+    try {
+      resultsFromGoogle = await signInWithPopup(auth, provider);
+      console.log(resultsFromGoogle);
+    } catch (error) {
+        console.log(error);
+    } 
+
+    if(!resultsFromGoogle)
+      console.log("Not logged");
+      
   }
 
   // Value to be shared as context
