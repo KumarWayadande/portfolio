@@ -1,5 +1,6 @@
 import express from "express";
 import { addPost, get, getAll } from "../controller/articles.js";
+import { checkAuthMiddleware } from "../util/auth.js";
 
 const router = express.Router();
 
@@ -22,6 +23,9 @@ router.post("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+
+router.use(checkAuthMiddleware);
 
 // To add a article
 router.post("/", async (req, res, next) => {

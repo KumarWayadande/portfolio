@@ -14,6 +14,8 @@ export const getFormattedText = (parsedValues) => {
   if (!parsedValues.length) return parsedValues;
 
   // Convert array of html element to an array of react elements and return
+  console.log(parsedValues);
+  
   let contents = parsedValues.map((tag) => {
     switch (tag.type) {
       case "p":

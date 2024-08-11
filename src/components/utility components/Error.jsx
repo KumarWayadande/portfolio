@@ -17,6 +17,11 @@ const Error = () => {
     errorTitle = "Resource not found!!!";
   }
 
+  if (error.status === 401) {
+    errorStatus = 401;
+    errorTitle = "You are not authenticated | Please login ";
+  }
+
   return (
     <RootLayout>
       <div className="error-container flex flex-col items-center gap-6 my-20">

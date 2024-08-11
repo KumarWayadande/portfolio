@@ -10,3 +10,19 @@ INSERT INTO articles VALUES ("ARTICLE_02", "2024-03-16", "Crafting a design syst
 
 alter table articles
 add description LONGTEXT
+
+CREATE TABLE users(
+    email VARCHAR(100) primary key not null,
+    username VARCHAR(100),
+    photoUrl VARCHAR(100),
+    phoneNumber VARCHAR(100)
+);
+
+CREATE TABLE system(
+    email VARCHAR(100),
+    createdAt VARCHAR(100),
+    creationTime VARCHAR(100),
+    lastLoginAt VARCHAR(100),
+    lastSignInTime VARCHAR(100),
+    foreign key(email) references users(email)
+);

@@ -3,20 +3,23 @@
 import { createContext, useState } from "react";
 import { IoSunny } from "react-icons/io5";
 import { LuMoonStar } from "react-icons/lu";
-import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "../firebase";
+import axios from "axios";
 // Navbar Context
 // Mainly built for navbar
 // Handles footer, dark mode and mobile navbar functionality
 export const NavbarContext = createContext({
   darkMode: undefined,
   showModal: undefined,
+  currentUser: undefined,
   getDarkModeMenuIcon: () => {},
   darkModeHandler: () => {},
   handleModalClick: () => {},
   getBothModeIcon: () => {},
   onOAuthClick: () => {},
   footerCopyRightText: "",
+  handleLogout:()=>{}
 });
 
 // Global icons for dark and light mode
@@ -59,6 +62,13 @@ export function NavbarContextProvider({ children }) {
 
   // showModal toggles display of mobile navbar
   const [showModal, setShowModal] = useState(false);
+
+  // Current user state to handle current user after each login and logout
+  const [currentUser, setCurrentUser] = useState(
+    localStorage.getItem("user") || undefined
+  );
+
+  // console.log(currentUser);
 
   // Global Footer text
   let footerCopyRightText = "© 2024 Kumar Wayadande. All rights reserved.";
@@ -116,38 +126,72 @@ export function NavbarContextProvider({ children }) {
     };
   };
 
-
   // Google firebase auth configuration
   const auth = getAuth(app);
-
 
   // function to handler google authentication clicks
   async function onOAuthClick() {
     const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({prompt:"select_account"});
+    provider.setCustomParameters({ prompt: "select_account" });
     let resultsFromGoogle;
     try {
       resultsFromGoogle = await signInWithPopup(auth, provider);
-      console.log(resultsFromGoogle);
-    } catch (error) {
-        console.log(error);
-    } 
+      // console.log(resultsFromGoogle);
+      if (resultsFromGoogle) {
+        const userData = {
+          email: resultsFromGoogle.user.email,
+          username: resultsFromGoogle.user.displayName,
+          profileUrl: resultsFromGoogle.user.photoURL,
+          phoneNumber: resultsFromGoogle.user.phoneNumber,
+        };
 
-    if(!resultsFromGoogle)
-      console.log("Not logged");
-      
+        const timeData = {
+          createdAt: resultsFromGoogle.user.metadata.createdAt,
+          creationTime: resultsFromGoogle.user.metadata.creationTime,
+          lastLoginAt: resultsFromGoogle.user.metadata.lastLoginAt,
+          lastSignInTime: resultsFromGoogle.user.metadata.lastSignInTime,
+        };
+
+        try {
+          const res = await axios.post("http://localhost:3000/auth/login", {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: { userData, timeData },
+          });
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+
+          setCurrentUser(res.data.user);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    if (!resultsFromGoogle) console.log("Not logged");
   }
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setCurrentUser(undefined);
+  };
 
   // Value to be shared as context
   const ctxValue = {
     darkMode,
     showModal,
+    currentUser,
     getDarkModeMenuIcon,
     darkModeHandler,
     handleModalClick,
     getBothModeIcon,
     footerCopyRightText,
     onOAuthClick,
+    handleLogout
   };
 
   return (

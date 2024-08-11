@@ -13,7 +13,7 @@ import SingleArticle, {
 } from "../article-components/single-article/SingleArticle.jsx";
 import Editor from "../editor/Editor.jsx";
 import ArticleRootLayout from "./ArticleRootLayout.jsx";
-import EditorRootLayout from "./EditorRootLayout.jsx";
+import EditorRootLayout, { loader as createPageLoader } from "./EditorRootLayout.jsx";
 import ArticleDescriptionPage from "../editor/ArticleDescriptionPage.jsx";
 
 const router = createBrowserRouter([
@@ -46,6 +46,7 @@ const router = createBrowserRouter([
       {
         path: "create",
         element: <EditorRootLayout />,
+        loader:createPageLoader,
         children: [
           {
             index: true,

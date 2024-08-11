@@ -12,7 +12,14 @@ export default function NavbarButtons() {
     darkModeHandler,
     getBothModeIcon,
     onOAuthClick,
+    currentUser,
+    handleLogout
   } = useContext(NavbarContext);
+
+  // console.log("Navbar buttons changed");
+  // console.log(currentUser);
+  
+  
 
   const { btn, btnClass } = getBothModeIcon();
   return (
@@ -23,16 +30,21 @@ export default function NavbarButtons() {
       </button>
 
       {/* Write button */}
-      <Link to={"create"} className={`${btnClass} flex`}>
+      {currentUser && <Link to={"create"} className={`${btnClass} flex`}>
         <button>
           <IoMdCreate fontSize="20px" color="#1fbcaa" />
         </button>
-      </Link>
+      </Link>}
 
       {/* Signin button */}
-      <button className={btnClass} onClick={onOAuthClick}>
+      {!currentUser && <button className={btnClass} onClick={onOAuthClick}>
         <FiUserPlus fontSize="20px" color="#1fbcaa" />
-      </button>
+      </button>}
+
+      {/* logout button */}
+      {currentUser && <button className={btnClass} onClick={handleLogout}>
+        <FiUserPlus fontSize="20px" color="#1fbcaa" />
+      </button>}
 
 
     {/* Menu button */}

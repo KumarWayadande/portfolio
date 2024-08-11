@@ -80,7 +80,7 @@ export function EditorContextProvider(prop) {
 
   const getCurrentDate = () => {
     const tempDate = new Date();
-    const day = tempDate.getDay();
+    const day = tempDate.getDay()+1;
     const month = tempDate.getMonth() + 1;
     const year = tempDate.getFullYear();
     const finalDate = month + "/" + day + "/" + year;
@@ -94,12 +94,27 @@ export function EditorContextProvider(prop) {
     const imgUrl = file ? await uploadImage(file) : "";
 
     try {
-      await axios.post(`http://localhost:3000/articles`, {
-        title,
-        description,
-        contents: value,
-        articleImg: file ? imgUrl : "",
-        articleDate: finalDate,
+      // await axios.post(`http://localhost:3000/articles`, {
+      //   title,
+      //   description,
+      //   contents: value,
+      //   articleImg: file ? imgUrl : "",
+      //   articleDate: finalDate,
+      // });
+
+      await fetch("http://localhost:3000/articles", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          contents: JSON.stringify(value),
+          articleImg: file ? imgUrl : "",
+          articleDate: finalDate,
+        }),
       });
 
       navigate("/articles"); // navigate to articles page

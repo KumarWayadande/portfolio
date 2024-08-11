@@ -60,3 +60,8 @@ export default function ArticleDescriptionPage() {
     </div>
   );
 }
+
+
+export async function loader(){
+  
+}

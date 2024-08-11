@@ -32,9 +32,12 @@ export const addPost = async (req, res) => {
   const q =
     "Insert into articles(`title`, `contents`, `articleImg`, `articleDate`, `description`) values(?)";
 
+    // console.log(req);
+    // console.log("This line completed");
+    
   const values = [
     req.body.title,
-    JSON.stringify(req.body.contents),
+    req.body.contents,
     req.body.articleImg,
     req.body.articleDate,
     req.body.description,
@@ -42,7 +45,7 @@ export const addPost = async (req, res) => {
 
   try {
     await db.query(q, [values]);
-    return res.status(200).json("Article added successfully");
+    return {message : "Article added successfully"};
   } catch (err) {
     throw new Error(err);
   }

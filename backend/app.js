@@ -1,14 +1,18 @@
+import cors from "cors";
 import multer from "multer";
 import bodyParser from "body-parser";
 import express from "express";
 import articleRoute from "./routes/article.js";
+import authRoute from "./routes/auth.js";
 const PORT = 3000;
 
 
 
 // Express Server intialization
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 // Middleware to use public folder to display static files, images
@@ -17,12 +21,14 @@ app.use("/upload", express.static("public"));
 
 // Allow server to not block cross origin requests (CORS) 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PATCH,DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+
   next();
 });
 
+app.use("/auth", authRoute);
 app.use("/articles", articleRoute);
 
 
