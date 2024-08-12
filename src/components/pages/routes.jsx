@@ -15,6 +15,7 @@ import Editor from "../editor/Editor.jsx";
 import ArticleRootLayout from "./ArticleRootLayout.jsx";
 import EditorRootLayout, { loader as createPageLoader } from "./EditorRootLayout.jsx";
 import ArticleDescriptionPage from "../editor/ArticleDescriptionPage.jsx";
+import LoginLandingPage from "../utility components/LoginLandingPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "", element: <LandingPage /> },
+      { path: "login", element: <LoginLandingPage /> },
       {
         path: "articles",
         element: <ArticleRootLayout />,

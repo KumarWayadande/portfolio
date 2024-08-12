@@ -3,6 +3,7 @@ import { NavbarContext } from "../../store/NavbarContext";
 import { Link } from "react-router-dom";
 import { IoMdCreate } from "react-icons/io";
 import { FiUserPlus } from "react-icons/fi";
+import { MdOutlineLogout } from "react-icons/md";
 
 export default function NavbarButtons() {
   const {
@@ -43,7 +44,7 @@ export default function NavbarButtons() {
 
       {/* logout button */}
       {currentUser && <button className={btnClass} onClick={handleLogout}>
-        <FiUserPlus fontSize="20px" color="#1fbcaa" />
+        <MdOutlineLogout fontSize="20px" color="#1fbcaa" />
       </button>}
 
 

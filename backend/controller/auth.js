@@ -6,8 +6,6 @@ export async function getUser(email) {
 
   try {
     const [result] = await db.query(q, [email]);
-    // console.log(result);
-
     if (result.length === 0) return null;
     return result[0];
   } catch (err) {
@@ -35,8 +33,6 @@ export async function login(req, res) {
       throw new Error(error);
     }
   } else {
-    // console.log("Existing entry will be modified");
-
     const q = "insert into system values(?)";
     const dataToBeStored = [
       userData.email,
@@ -53,6 +49,5 @@ export async function login(req, res) {
 }
 
 export function logout(req, res) {
-//   console.log(req.body.userData);
   res.json("logout Successfull");
 }

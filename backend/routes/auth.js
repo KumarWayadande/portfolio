@@ -17,7 +17,7 @@ router.post("/logout", logout);
 router.use(checkAuthMiddleware);
 
 router.post("/authcheck", (req, res) => {
-  res.json("Done");
+  res.json("Access Given");
 });
 
 export default router;

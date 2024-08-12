@@ -5,7 +5,9 @@ import CustomTextArea from "./CustomTextArea";
 import CustomButton from "./CustomButton";
 import FileUpload from "./FileUpload";
 import { EditorContext } from "../../store/EditorContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { NavbarContext } from "../../store/NavbarContext";
+import { useNavigate } from "react-router-dom";
 
 export default function ArticleDescriptionPage() {
   const {
@@ -18,6 +20,16 @@ export default function ArticleDescriptionPage() {
     onClickHandler,
     setFile,
   } = useContext(EditorContext);
+
+  const navigate = useNavigate();
+  const {currentUser} = useContext(NavbarContext);
+
+
+  useEffect(() => {
+    if(!currentUser){
+      navigate("/login");
+    }
+  }, [currentUser]);
 
   return (
     <div className="flex flex-col my-10 gap-2 items-center">

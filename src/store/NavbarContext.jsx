@@ -136,7 +136,6 @@ export function NavbarContextProvider({ children }) {
     let resultsFromGoogle;
     try {
       resultsFromGoogle = await signInWithPopup(auth, provider);
-      // console.log(resultsFromGoogle);
       if (resultsFromGoogle) {
         const userData = {
           email: resultsFromGoogle.user.email,
@@ -163,15 +162,17 @@ export function NavbarContextProvider({ children }) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
 
           setCurrentUser(res.data.user);
+          return userData;
         } catch (err) {
-          console.log(err);
+          throw new Error(err.message, { status: err.status });
         }
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      // throw new Error(err.message, { status: err.status });
     }
 
-    if (!resultsFromGoogle) console.log("Not logged");
+    if (!resultsFromGoogle) 
+      return "Not logged in";
   }
 
   const handleLogout = () => {

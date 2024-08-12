@@ -30,7 +30,7 @@ router.use(checkAuthMiddleware);
 // To add a article
 router.post("/", async (req, res, next) => {
   try {
-    await addPost(req, res);
+    await addPost(req, res);  
     res.json({ message: "Article created successfully" });
   } catch (error) {
     next(error);

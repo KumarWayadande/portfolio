@@ -1,13 +1,14 @@
 import { useContext, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { getFormattedText } from "../utility components/Parser";
 import Heading from "../article-components/single-article/Heading";
 import Image from "../article-components/single-article/Image";
 import { Link, useNavigate } from "react-router-dom";
 import Parser from "html-react-parser";
 import { EditorContext } from "../../store/EditorContext";
 import CustomButton from "./CustomButton";
+import { NavbarContext } from "../../store/NavbarContext";
+// import { getFormattedText } from "../utility components/Parser";
 // Custom modules for Quill Editor
 const modules = {
   toolbar: [
@@ -33,14 +34,19 @@ const formats = [
 
 // Article Editor to create an article
 export default function Editor() {
-  const { title, file, value, setValue, handleSubmit, validateData } =
+  const { title, file, value, setValue, handleSubmit, validateData, getFormattedText } =
     useContext(EditorContext);
+    const {currentUser} = useContext(NavbarContext);
   const navigate = useNavigate();
 
   // If some input fields are missing then return to the previous page
   useEffect(() => {
     if (validateData().status) navigate("..");
   }, []);
+
+  useEffect(() => {
+    if (!currentUser) navigate("/login");
+  }, [currentUser]);
 
   let contents = ""; // holds contents
 

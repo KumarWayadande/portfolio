@@ -5,7 +5,9 @@ import Heading from "./Heading";
 import Date from "./Date";
 import Image from "./Image";
 import Parser from "html-react-parser";
-import { getFormattedText } from "../../utility components/Parser";
+import { useContext } from "react";
+import { EditorContext } from "../../../store/EditorContext";
+// import { getFormattedText } from "../../utility components/Parser";
 
 
 // Component that renders a single article
@@ -14,6 +16,8 @@ export default function SingleArticle() {
   // Data returned by the loader
   // data -> article -> title
   const { data } = useLoaderData();
+
+  const {getFormattedText} = useContext(EditorContext);
 
   // Parse raw data into array of react elements
   // console.log(Parser(data.article.contents));

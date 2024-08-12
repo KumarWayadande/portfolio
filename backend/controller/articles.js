@@ -32,9 +32,6 @@ export const addPost = async (req, res) => {
   const q =
     "Insert into articles(`title`, `contents`, `articleImg`, `articleDate`, `description`) values(?)";
 
-    // console.log(req);
-    // console.log("This line completed");
-    
   const values = [
     req.body.title,
     req.body.contents,
