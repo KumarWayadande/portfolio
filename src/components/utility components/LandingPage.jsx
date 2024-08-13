@@ -1,7 +1,6 @@
-
 import MediaIcon from "./Mediacon";
 import OverviewArticle from "./OverviewArticle";
-
+import resume from "../../assets/Copy of Resume.pdf";
 const LandingPage = () => {
   return (
     <div className="main-page-container">
@@ -15,20 +14,19 @@ const LandingPage = () => {
         </div>
 
         <div className="heading text-4xl md:text-5xl font-bold dark:text-white">
-          Software designer, founder, and amateur astronaut.
+          Software designer, adviser, and amateur psychophile.
         </div>
 
         <div className="">
-          <p className="dark:text-gray-500">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+          <p className="dark:text-stone-500">
+            I’m Kumar, a software designer by profession and psychophile based in Pune
+            City. I’m strongly interested in psychology - The science of human thought, emotion, and learning, including interpersonal relationships.
+            
           </p>
         </div>
 
         <div className="social-media-icons-container flex space-x-5">
-          <MediaIcon class="fa-brands fa-github"  link="#"/>
+          <MediaIcon class="fa-brands fa-github" link="#" />
           <MediaIcon class="fa-brands fa-linkedin" link="#" />
           <MediaIcon class="fa-brands fa-instagram" link="#" />
           <MediaIcon class="fa-brands fa-x-twitter" link="#" />
@@ -76,20 +74,18 @@ const LandingPage = () => {
 
       <div className="third-section flex md:flex-row flex-col my-20">
         <div className="left flex flex-col w-[100%]">
-          
-          
-
           <OverviewArticle />
           <OverviewArticle />
           <OverviewArticle />
-          
         </div>
 
         <div className="right flex flex-col w-[100%] my-5 lg:pl-32 px-4 py-0">
           <div className="contact-card p-5 border dark:border-gray-700 rounded-lg">
             <span className="flex gap-2 items-center text-stone-600">
               <i className="fa-solid fa-briefcase"></i>
-              <h3 className="font-semibold text-sm text-stone-900 dark:text-gray-50">Stay up to date</h3>
+              <h3 className="font-semibold text-sm text-stone-900 dark:text-gray-50">
+                Stay up to date
+              </h3>
             </span>
             <p className="text-stone-400 dark:text-stone-500 my-3 text-sm">
               Get notified when i publish something new, and unsubscribe at
@@ -112,7 +108,9 @@ const LandingPage = () => {
           <div className="work-exp p-5 border dark:border-gray-700 rounded-lg my-10">
             <span className="flex gap-2 items-center text-stone-600">
               <i className="fa-solid fa-briefcase"></i>
-              <h3 className="font-semibold text-stone-500 dark:text-stone-100">Work</h3>
+              <h3 className="font-semibold text-stone-500 dark:text-stone-100">
+                Work
+              </h3>
             </span>
             <div className="companies flex flex-col my-3">
               <div className="work-holder flex my-1 justify-between items-baseline">
@@ -126,7 +124,9 @@ const LandingPage = () => {
                   </span>
 
                   <div className="company-info">
-                    <h5 className="font-semibold text-sm dark:text-stone-100">Planetaria</h5>
+                    <h5 className="font-semibold text-sm dark:text-stone-100">
+                      Planetaria
+                    </h5>
                     <p className="text-stone-400 text-sm">CEO</p>
                   </div>
                 </div>
@@ -149,7 +149,9 @@ const LandingPage = () => {
                   </span>
 
                   <div className="company-info">
-                    <h5 className="font-semibold text-sm dark:text-stone-100">Planetaria</h5>
+                    <h5 className="font-semibold text-sm dark:text-stone-100">
+                      Planetaria
+                    </h5>
                     <p className="text-stone-400 text-sm">CEO</p>
                   </div>
                 </div>
@@ -171,7 +173,9 @@ const LandingPage = () => {
                   </span>
 
                   <div className="company-info">
-                    <h5 className="font-semibold text-sm dark:text-stone-100">Planetaria</h5>
+                    <h5 className="font-semibold text-sm dark:text-stone-100">
+                      Planetaria
+                    </h5>
                     <p className="text-stone-400 text-sm">CEO</p>
                   </div>
                 </div>
@@ -193,7 +197,9 @@ const LandingPage = () => {
                   </span>
 
                   <div className="company-info">
-                    <h5 className="font-semibold text-sm dark:text-stone-100">Planetaria</h5>
+                    <h5 className="font-semibold text-sm dark:text-stone-100">
+                      Planetaria
+                    </h5>
                     <p className="text-stone-400 text-sm">CEO</p>
                   </div>
                 </div>
@@ -206,9 +212,11 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="">
-              <button className="text-sm dark:hover:bg-[#3F3F46] dark:bg-[#303035] dark:border-none dark:text-stone-300 px-4 py-2 w-[100%] border rounded-lg bg-gray-100 font-semibold">
-                Download CV
-              </button>
+              <a href={resume} download="Copy of Resume.pdf">
+                <button className="text-sm dark:hover:bg-[#3F3F46] dark:bg-[#303035] dark:border-none dark:text-stone-300 px-4 py-2 w-[100%] border rounded-lg bg-gray-100 font-semibold">
+                  Download CV
+                </button>
+              </a>
             </div>
           </div>
         </div>
