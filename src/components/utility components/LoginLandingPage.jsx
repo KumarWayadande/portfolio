@@ -1,9 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect , useState} from "react";
 import Heading from "./Heading";
 import { NavbarContext } from "../../store/NavbarContext";
 import { useNavigate } from "react-router-dom";
 export default function LoginLandingPage() {
   const { onOAuthClick, currentUser } = useContext(NavbarContext);
+  const [btnDisabled, setBtnDisabled] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,10 +18,12 @@ export default function LoginLandingPage() {
 
 
   async function handleClick() {
+    setBtnDisabled(true);
     if (await onOAuthClick() !== "Not logged in") {
       console.log("Here come in ");
       navigate("/");
     } else {
+      setBtnDisabled(false);
       navigate("/login");
     }
   }
@@ -47,9 +50,10 @@ export default function LoginLandingPage() {
                 <button
                   onClick={handleClick}
                   type="submit"
-                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                  disabled={btnDisabled}
+                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#1fbcaa] text-white hover:bg-[#178a7d] focus:outline-none focus:bg-[#1fbcaa] disabled:opacity-50 disabled:pointer-events-none"
                 >
-                  Login with Google
+                  {btnDisabled ? 'Wait processing...' : 'Login with Google'}
                 </button>
                 {/* <CustomButton label="Login with Google" /> */}
               </div>

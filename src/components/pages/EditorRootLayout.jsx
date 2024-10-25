@@ -22,7 +22,6 @@ export async function loader() {
     console.log(res);
     
     if(!res.ok || res.status === 401){
-      // alert("Login please");
       return redirect("/login");
     }
 
