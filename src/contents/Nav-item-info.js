@@ -19,14 +19,14 @@ export const NAV_ITEM_INFO = [
   },
   {
     id:"NAV_ITEM_04",
-    content: "Speaking",
+    content: "Uses",
     isBottomBorder: true,
-    path:"speaking"
+    path:"uses"
   },
   {
     id:"NAV_ITEM_05",
-    content: "Uses",
+    content: "More",
     isBottomBorder: false,
-    path:"uses"
-  },
+    path:"more"
+  }
 ];

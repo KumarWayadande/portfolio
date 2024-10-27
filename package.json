@@ -19,6 +19,7 @@
     "axios": "^1.7.2",
     "cors": "^2.8.5",
     "firebase": "^10.12.5",
+    "flowbite-react": "^0.10.2",
     "html-react-parser": "^5.1.12",
     "jsonwebtoken": "^9.0.2",
     "quill": "^2.0.2",

@@ -16,12 +16,12 @@ export const NAVBAR_ITEM_INFO = [
   },
   {
     id: "NAVBAR_ITEM_04",
-    navbarHeading: "Speaking",
-    path: "speaking",
-  },
-  {
-    id: "NAVBAR_ITEM_05",
     navbarHeading: "Uses",
     path: "uses",
   },
+  {
+    id: "NAVBAR_ITEM_05",
+    navbarHeading: "More",
+    path: "more",
+  }
 ];
