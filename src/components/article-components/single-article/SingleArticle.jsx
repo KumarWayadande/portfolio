@@ -46,7 +46,7 @@ export default function SingleArticle() {
 export async function loader({ params }) {
   try {
     // Access article id from url using params parameter 
-    // Access it using "id" as url also contains id as a query like "/:id"
+    // Access it using "id" as url also contains id in a query like "/:id"
     const articleId = params.id;
     return await axios.post("http://localhost:3000/articles/" + articleId, {
       articleId,
