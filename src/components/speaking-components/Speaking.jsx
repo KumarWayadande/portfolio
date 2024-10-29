@@ -107,6 +107,22 @@ const Speaking = () => {
             </div>
           </div>
         </div>
+        <div className="current-situation text-gray-600 dark:text-gray-400">
+          <h1 className="text-3xl font-semibold mt-16 border-b-2 pb-3 dark:border-b-gray-800 text-gray-800 dark:text-gray-400">
+            To be done 
+          </h1>
+          <p className="italic text-sm my-5">Updated October 6th, 2024</p>
+
+          {/* <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Password requirements:</h2> */}
+          <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+            <li>Build a short template for survey to analyze different personalities.</li>
+            <li>Learn how Secret Agencies work. (Primarily - Mossad)</li>
+            <li>Deep understanding of The Underworld</li>
+            <li>Advance Projects using AWS</li>
+            <li>Research on Micro Businesses.</li>
+            <li>Exploring realtime map to gain geographical knowledge.</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
