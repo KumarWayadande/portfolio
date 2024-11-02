@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Heading from "../article-components/single-article/Heading";
@@ -10,14 +10,7 @@ import CustomButton from "./CustomButton";
 import { NavbarContext } from "../../store/NavbarContext";
 // import { getFormattedText } from "../utility components/Parser";
 // Custom modules for Quill Editor
-const modules = {
-  toolbar: [
-    [{ header: [1, 2, false] }],
-    ["bold", "italic", "underline", "strike", "code-block"],
-    [{ list: "bullet" }],
-    ["link"],
-  ],
-};
+
 
 // Custom formats for Quill Editor
 const formats = [
@@ -34,10 +27,54 @@ const formats = [
 
 // Article Editor to create an article
 export default function Editor() {
-  const { title, file, value, setValue, handleSubmit, validateData, getFormattedText } =
-    useContext(EditorContext);
-    const {currentUser} = useContext(NavbarContext);
+  const {
+    title,
+    file,
+    value,
+    setValue,
+    handleSet,
+    handleSubmit,
+    validateData,
+    getFormattedText,
+  } = useContext(EditorContext);
+  const { currentUser } = useContext(NavbarContext);
   const navigate = useNavigate();
+  const quillRef = useRef();
+  function imageHandler() {
+    console.log("custom image handler");
+    // const editor = quillRef.current.getEditor();
+
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
+
+    input.onchange = async () => {
+      const file = input.files[0];
+      console.log(file);
+      
+      // try {
+      //   const link = IMAGE_LINK_HERE;
+      //   editor.insertEmbed(editor.getSelection(), "image", link);
+      // } catch (err) {
+      //   console.log("upload err:", err);
+      // }
+    };
+  }
+
+  const modules = {
+    toolbar: {
+      container: [
+        [{ header: [1, 2, false] }],
+        ["bold", "italic", "underline", "strike", "code-block"],
+        [{ list: "bullet" }],
+        ["image", "link"],
+      ],
+      handlers: {
+        image: imageHandler,
+      },
+    },
+  };
 
   // If some input fields are missing then return to the previous page
   useEffect(() => {
@@ -86,6 +123,7 @@ export default function Editor() {
             onChange={setValue}
             modules={modules}
             formats={formats}
+            ref={quillRef}
           />
         </div>
       </div>

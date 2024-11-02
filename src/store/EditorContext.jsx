@@ -21,6 +21,7 @@ export const EditorContext = createContext({
   handleSubmit: () => {},
   validateData: () => {},
   getFormattedText: () => {},
+  handleSet: () => {},
 });
 
 export function EditorContextProvider(prop) {
@@ -29,6 +30,11 @@ export function EditorContextProvider(prop) {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
+
+  const handleSet = () => {
+    // setValue(e.target.value);
+  }
+  console.log(value);
 
   const onDescriptionChangeHandler = (e) => {
     setDescription(e.target.value);
@@ -172,6 +178,7 @@ export function EditorContextProvider(prop) {
     handleSubmit,
     validateData,
     getFormattedText,
+    handleSet
   };
 
   return (
